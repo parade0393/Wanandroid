@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Wanandroid"
 include(":app")
- 
+include(":lib_base")
