@@ -13,6 +13,8 @@ googleMaterial = "1.12.0"
 androidxConstraintlayout = "2.1.4"
 androidxlifecycle = "2.8.3"
 androidxNavigation = "2.7.7"
+androidxActivityKtx = "1.9.1"
+androidxFragmentKtx = "1.8.2"
 
 androidxTestJunit = "1.2.1"
 androidxTestEspresso = "3.6.1"
@@ -29,6 +31,9 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxlifecycle" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx",version.ref = "androidxNavigation" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx",version.ref = "androidxNavigation" }
+
+androidx-activity-ktx = { group = "androidx.activity" , name = "activity-ktx" , version.ref = "androidxActivityKtx" }
+androidx-fgragment-ktx = { group = "androidx.fragment" , name = "fragment-ktx" ,version.ref = "androidxFragmentKtx" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestJunit"}
