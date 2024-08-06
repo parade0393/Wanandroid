@@ -13,3 +13,4 @@ app/src/androidTest
 /lib_base/src/androidTest/
 /lib_base/src/test/
 app/release
+/local_maven

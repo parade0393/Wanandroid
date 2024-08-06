@@ -3,6 +3,9 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            url = uri("./local_maven")
+        }
     }
 }
 dependencyResolutionManagement {
@@ -16,3 +19,4 @@ dependencyResolutionManagement {
 rootProject.name = "Wanandroid"
 include(":app")
 include(":lib_base")
+include(":plugin")
