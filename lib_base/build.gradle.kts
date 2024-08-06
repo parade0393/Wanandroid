@@ -2,7 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
-    id("me.parade.dependency-exclude")
+//    id("me.parade.dependency-exclude")
 }
 
 android {

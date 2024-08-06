@@ -4,5 +4,5 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false//org.jetbrains.kotlin.android 2.0.0
     alias(libs.plugins.android.library) apply false//com.android.library 8.1.4
     alias(libs.plugins.kotlin.kapt) apply false
-    id("me.parade.dependency-exclude") version "1.0.0" apply  false
+//    id("me.parade.dependency-exclude") version "1.0.0" apply  false
 }

@@ -3,9 +3,9 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        maven {
-            url = uri("./local_maven")
-        }
+//        maven {
+//            url = uri("./local_maven")
+//        }
     }
 }
 dependencyResolutionManagement {
