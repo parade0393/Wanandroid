@@ -1,9 +1,8 @@
 package me.parade.wanandroid
 
+import android.app.Application
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
@@ -11,11 +10,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import me.parade.lib_base.BaseActivity
-import me.parade.lib_base.NoViewModel
+import me.parade.lib_base.base.BaseActivity
 import me.parade.wanandroid.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity<ActivityMainBinding,TestMainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding, TestMainViewModel>() {
 
 
 
@@ -47,14 +45,5 @@ class MainActivity : BaseActivity<ActivityMainBinding,TestMainViewModel>() {
         binding.btnSub.setOnClickListener{
             viewModel.decrement()
         }
-    }
-
-    override fun createViewModel(
-        modelClass: Class<TestMainViewModel>,
-        extras: CreationExtras
-    ): TestMainViewModel {
-        val savedStateHandle = extras.createSavedStateHandle()
-        val application = extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY]
-        return TestMainViewModel(application,savedStateHandle)
     }
 }

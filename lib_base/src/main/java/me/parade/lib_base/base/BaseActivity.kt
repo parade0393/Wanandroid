@@ -1,53 +1,29 @@
-package me.parade.lib_base
+package me.parade.lib_base.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 //import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
-import androidx.lifecycle.viewmodel.MutableCreationExtras
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.viewbinding.ViewBinding
+import me.parade.lib_base.helper.ViewModelCreateHelper
 import java.lang.reflect.ParameterizedType
 
 
-abstract class BaseActivity<DB:ViewBinding,VM:BaseViewModel> :AppCompatActivity(){
+abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity(){
     protected lateinit var binding: DB
-    protected val viewModel:VM by lazy {
-        @Suppress("UNCHECKED_CAST")
-        val vmClass = (javaClass.genericSuperclass as ParameterizedType)
-            .actualTypeArguments[1] as Class<VM>
-        //这里 [vmClass] 实际上是调用了 ViewModelProvider 的 get() 方法 它等同于 ViewModelProvider(this, createViewModelFactory()).get(vmClass)
-        ViewModelProvider(this, createViewModelFactory())[vmClass]
-    }
-
-    private fun createViewModelFactory():ViewModelProvider.Factory {
-       return object :ViewModelProvider.Factory{
-           override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-               @Suppress("UNCHECKED_CAST")
-               return createViewModel(modelClass as Class<VM>, extras) as T
-           }
-       }
-    }
-
-    protected open fun createViewModel(
-        modelClass: Class<VM>,
-        extras: CreationExtras
-    ): VM {
-        return modelClass.getConstructor()
-            .newInstance()
-    }
+    protected lateinit var viewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = createBinding()
+
+        viewModel = ViewModelCreateHelper.createViewModel(viewModelStore,javaClass,defaultViewModelCreationExtras,::provideParameter)
         // 只有在使用 ViewBinding 时才需要调用 setContentView
         if(binding !is ViewDataBinding){
             setContentView(binding.root)
@@ -83,4 +59,10 @@ abstract class BaseActivity<DB:ViewBinding,VM:BaseViewModel> :AppCompatActivity(
      * 做一些初始化操作
      */
     abstract fun initView(savedInstanceState: Bundle?)
+
+    protected open fun provideParameter(paramName: String, paramType: Class<*>): Any? {
+        // 默认实现返回 null，子类应该重写这个方法来提供自定义参数
+        Log.w("BaseActivity", "provideParameter not overridden for parameter: $paramName of type $paramType")
+        return null
+    }
 }

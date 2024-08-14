@@ -1,4 +1,4 @@
-package me.parade.lib_base
+package me.parade.lib_base.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

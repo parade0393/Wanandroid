@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import me.parade.lib_base.base.BaseViewModel
 
-class TestMainViewModel(private val app:Application?,private val savedStateHandle:SavedStateHandle):
+class TestViewModel(private val userId:Int,private val app:Application?, private val savedStateHandle:SavedStateHandle):
     BaseViewModel() {
     private val _count: MutableLiveData<Int> = savedStateHandle.getLiveData("count", 0)
     val count: LiveData<Int> = _count
