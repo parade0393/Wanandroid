@@ -1,8 +1,6 @@
 package me.parade.lib_base.helper
 
 import android.app.Application
-import android.util.Log
-import androidx.fragment.app.Fragment.InstantiationException
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -12,8 +10,13 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import me.parade.lib_base.base.BaseViewModel
+import me.parade.lib_base.ext.loge
 import java.lang.reflect.ParameterizedType
 
+/**
+ * ViewModel创建，包括构造函数里有参数的情况
+ * 有SavedStateHandle和Application的参数会自动传值，其他参数需要使用者通过重写Base类的provideParameter方法自行赋值，
+ */
 object ViewModelCreateHelper {
     fun <VM : BaseViewModel> createViewModel(
         owner: ViewModelStore,
@@ -109,10 +112,10 @@ object ViewModelCreateHelper {
                     return constructor.newInstance(*params.toTypedArray()) as VM
                 } catch (e: Exception) {
                     // 记录异常信息，但继续尝试下一个构造函数
-                    Log.e(
-                        "BaseFragment",
+                    loge(
+
                         "Failed to create ViewModel with constructor: ${constructor.toGenericString()}",
-                        e
+                        "ViewModelCreateHelper"
                     )
                     continue
                 }
