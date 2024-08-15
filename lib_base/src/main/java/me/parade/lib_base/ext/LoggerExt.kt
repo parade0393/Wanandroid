@@ -13,7 +13,7 @@ import me.parade.lib_base.BuildConfig
 const val TAG = "parade0393"
 
 var showLog = BuildConfig.DEBUG
-var showStackTrace = true
+var showStackTrace = false
 
 private enum class LEVEL {
     V, D, I, W, E

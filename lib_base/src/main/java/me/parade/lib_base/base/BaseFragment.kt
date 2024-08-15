@@ -8,6 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelStore
 import androidx.viewbinding.ViewBinding
+import me.parade.lib_base.ext.logd
 import me.parade.lib_base.ext.logw
 import me.parade.lib_base.helper.ViewModelCreateHelper
 import java.lang.reflect.ParameterizedType
@@ -48,7 +49,7 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
     /** 初始化试图的一些操作，比如RecyclerView的初始化等 */
-    open fun initView(savedInstanceState: Bundle?) {}
+    abstract fun initView(savedInstanceState: Bundle?)
 
     protected open fun getCustomViewModelStore(): ViewModelStore {
         return viewModelStore
@@ -58,5 +59,28 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
         // 默认实现返回 null，子类应该重写这个方法来提供自定义参数
         logw( "provideParameter not overridden for parameter: $paramName of type $paramType","BaseFragment")
         return null
+    }
+
+    override fun onStart() {
+        super.onStart()
+        logd("onStart--${javaClass.simpleName}")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        logd("onStop--${javaClass.simpleName}")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        logd("onResume--${javaClass.simpleName}")
+    }
+
+    /**
+     * 总是较先调用，比onStart和onResume靠前
+     */
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        logd("onHiddenChanged--$hidden--${javaClass.simpleName}")
     }
 }

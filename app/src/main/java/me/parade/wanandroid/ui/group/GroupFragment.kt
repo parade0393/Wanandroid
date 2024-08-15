@@ -1,12 +1,15 @@
-package me.parade.wanandroid.ui.home
+package me.parade.wanandroid.ui.group
 
 import android.os.Bundle
 import me.parade.lib_base.base.BaseFragment
 import me.parade.lib_base.base.EmptyViewModel
-import me.parade.wanandroid.databinding.FragmentHomeBinding
+import me.parade.wanandroid.databinding.FragmentGroupBinding
 
-class HomeFragment : BaseFragment<FragmentHomeBinding,EmptyViewModel>() {
+
+class GroupFragment : BaseFragment<FragmentGroupBinding,EmptyViewModel>() {
     override fun initView(savedInstanceState: Bundle?) {
 
     }
+
+
 }
