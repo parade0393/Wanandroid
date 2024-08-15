@@ -29,7 +29,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, TestMainViewModel>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         switchFragment(0)
-        binding.navView.setOnItemSelectedListener(NavBottomViewDoubleClickListener(this::onBottomItemSelect,this::onBottomDoubleClick))
+        binding.navView.also {
+//            it.itemIconTintList = null
+            it.setOnItemSelectedListener(NavBottomViewDoubleClickListener(this::onBottomItemSelect,this::onBottomDoubleClick))
+        }
     }
 
     private fun onBottomItemSelect(item: MenuItem): Boolean {

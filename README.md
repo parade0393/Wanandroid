@@ -1,3 +1,9 @@
 1. dataExtractionRules和fullBackupContent对于我们一般的应用来说没啥用,是用来指定备份数据的,前者使用Android12以后的版本，后者使用Android6-Android11的版本
 2. DataBinding依赖kapt，所以使用DataBinding需要添加kapt插件，而ViewBinding不需要
 3. agp8.0以上默认关闭了BuildConfig，需要再buildFeature里开启
+4. BottomNavigation改造-使用两套图
+    * 代码设置itemIconTintList为null
+    * xml设置itemTextColor的资源为StateColor
+    * xml设置itemActiveIndicatorStyle为transparent
+    * menu里设置icon为StateDrawable
+    * 当然也可以使用tint达到两套图的效果，此时代码无需设置itemIconTintList，xml需要设置itemIconTint和itemTextColor
