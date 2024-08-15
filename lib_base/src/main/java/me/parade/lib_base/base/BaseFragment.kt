@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelStore
 import androidx.viewbinding.ViewBinding
 import me.parade.lib_base.ext.logd
@@ -73,7 +74,7 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
 
     override fun onResume() {
         super.onResume()
-        logd("onResume--${javaClass.simpleName}")
+        onVisible("onResume")
     }
 
     /**
@@ -81,6 +82,25 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
      */
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        logd("onHiddenChanged--$hidden--${javaClass.simpleName}")
+        onVisible("onHiddenChanged",hidden)
+    }
+
+    private fun onVisible(tag:String,hidden: Boolean = false){
+        if(tag == "onResume"){
+            if (isVisible){
+                // onResume调用且可见时
+                lazyLoad(tag)
+            }
+        }else{
+            if(!hidden){
+                if(lifecycle.currentState == Lifecycle.State.RESUMED){
+                    //可见且处于RESUME状态时
+                    lazyLoad(tag)
+                }
+            }
+        }
+    }
+    open fun lazyLoad(tag: String){
+        logd("${javaClass.simpleName}-loaded--$tag")
     }
 }

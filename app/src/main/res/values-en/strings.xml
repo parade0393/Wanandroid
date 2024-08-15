@@ -9,4 +9,6 @@
     <string name="title_search">Search</string>
     <string name="title_we_chat_group">Wechat</string>
     <string name="title_profile">Me</string>
+    <string name="tab_home_answer">Answer</string>
+    <string name="tab_home_square">Square</string>
 </resources>
