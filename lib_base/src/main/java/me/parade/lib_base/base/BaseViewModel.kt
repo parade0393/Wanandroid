@@ -11,4 +11,5 @@ abstract  class BaseViewModel:ViewModel() {
     protected fun setLoading(loading: Boolean) {
         _isLoading.value = loading
     }
+
 }

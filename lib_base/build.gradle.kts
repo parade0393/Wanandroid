@@ -53,6 +53,10 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fgragment.ktx)
 
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.retrofit.scalars)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.espresso)
