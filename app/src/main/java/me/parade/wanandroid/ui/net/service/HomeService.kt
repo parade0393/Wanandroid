@@ -5,6 +5,6 @@ import me.parade.wanandroid.ui.net.model.TestBean
 import retrofit2.http.GET
 
 interface HomeService {
-    @GET("/user")
+    @GET("user")
     suspend fun testApi():BaseResponse<TestBean>
 }

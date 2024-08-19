@@ -61,9 +61,9 @@ suspend fun <T> requestFlowResponse(
         }
         .catch { e->
             e.printStackTrace()
-            loge(e.message?:"未知异常")
-            val code = if (e is ApiException) (e as ApiException).errCode else 500
-            val msg = if (e is ApiException) (e as ApiException).errMsg else e.message?:"未知异常"
+            val code = if (e is ApiException) e.errCode else 500
+            val msg = if (e is ApiException) e.errMsg else e.message?:"未知异常"
+            loge(msg)
             errorBlock?.invoke(code,msg)
         }
         .onCompletion {
