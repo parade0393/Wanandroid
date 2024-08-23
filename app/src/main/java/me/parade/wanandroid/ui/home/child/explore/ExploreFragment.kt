@@ -28,6 +28,9 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding,ExploreVM>() {
                 }
             }
         }
+        binding.btnQuest.setOnClickListener {
+            viewModel.getData()
+        }
     }
 
     override fun lazyLoad(tag: String) {

@@ -1,6 +1,8 @@
 package me.parade.lib_base.net
 
+import me.parade.lib_base.net.converter.ErrorHandlerConverterFactory
 import me.parade.lib_base.net.interceptor.AuthInterceptor
+import me.parade.lib_base.net.interceptor.ExceptionTransformInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,6 +22,7 @@ object RetrofitManager {
     private val okHttpClient:OkHttpClient by lazy {
         OkHttpClient().newBuilder()
             .addInterceptor(AuthInterceptor())
+            .addInterceptor(ExceptionTransformInterceptor())
             .connectTimeout(TIME_OUT_SECONDS.toLong(),TimeUnit.SECONDS)
             .readTimeout(TIME_OUT_SECONDS.toLong(),TimeUnit.SECONDS)
             .writeTimeout(TIME_OUT_SECONDS.toLong(),TimeUnit.SECONDS)
@@ -31,6 +34,7 @@ object RetrofitManager {
             .client(okHttpClient)
             .baseUrl(BASE_URL)
             .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(ErrorHandlerConverterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

@@ -23,6 +23,7 @@ junit = "4.13.2"
 databindingRuntime = "8.5.1"
 
 retrofit = "2.11.0"
+okhttp = "4.12.0"
 
 [libraries]
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
@@ -45,6 +46,7 @@ androidx-databinding-runtime = { group = "androidx.databinding", name = "databin
 retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 retrofit-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "retrofit"}
+okhttp-client = { group = "com.squareup.okhttp3",name = "okhttp", version.ref = "okhttp" }
 
 
 [plugins]

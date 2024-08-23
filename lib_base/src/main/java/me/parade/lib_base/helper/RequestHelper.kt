@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
+import me.parade.lib_base.ext.logd
 import me.parade.lib_base.ext.loge
 import me.parade.lib_base.net.BaseResponse
 import me.parade.lib_base.net.exception.ApiException
@@ -50,7 +51,7 @@ suspend fun <T> requestFlowResponse(
     val flow = flow {
         val response = requestBlock()
         if(!response.isSuccess()){
-            throw ApiException(response.errorCode,response.errorMsg)
+            errorBlock?.invoke(response.errorCode,response.errorMsg)
         }
         //2.发送网络请求结果回调
         emit(response)
@@ -61,8 +62,16 @@ suspend fun <T> requestFlowResponse(
         }
         .catch { e->
             e.printStackTrace()
-            val code = if (e is ApiException) e.errCode else 500
-            val msg = if (e is ApiException) e.errMsg else e.message?:"未知异常"
+            if(e is ApiException){
+                logd("111")
+            }else{
+                logd("2222")
+            }
+            (e as? ApiException)?.let { ex->
+                logd("${ex.requestUrl}-${ex.code}-${ex.msg}")
+            }
+            val code = if (e is ApiException) e.code else 500
+            val msg = if (e is ApiException) e.msg else e.message?:"未知异常"
             loge(msg)
             errorBlock?.invoke(code,msg)
         }

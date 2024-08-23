@@ -7,8 +7,8 @@ import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseViewModel
 import me.parade.lib_base.helper.requestFlowResponse
 import me.parade.lib_base.net.RetrofitManager
-import me.parade.wanandroid.ui.net.model.TestBean
-import me.parade.wanandroid.ui.net.service.HomeService
+import me.parade.wanandroid.net.model.TestBean
+import me.parade.wanandroid.net.service.HomeService
 
 class ExploreVM:BaseViewModel() {
     private val _data = MutableSharedFlow<TestBean>()
@@ -18,8 +18,8 @@ class ExploreVM:BaseViewModel() {
         viewModelScope.launch {
            requestFlowResponse(
                requestBlock = {RetrofitManager.create(HomeService::class.java).testApi()}
-           ).collect{
-               _data.emit(it.data)
+           ).collect{ res->
+               _data.emit(res.data)
            }
         }
     }

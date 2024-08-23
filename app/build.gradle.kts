@@ -57,8 +57,10 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    implementation(libs.retrofit)
-
+    implementation(libs.retrofit){
+        exclude(group = "com.squareup.okhttp3", module ="okhttp")
+    }
+    implementation(libs.okhttp.client)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.espresso)

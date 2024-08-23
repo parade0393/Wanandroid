@@ -53,7 +53,10 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fgragment.ktx)
 
-    implementation(libs.retrofit)
+    implementation(libs.retrofit){
+        exclude(group = "com.squareup.okhttp3", module ="okhttp")
+    }
+    implementation(libs.okhttp.client)
     implementation(libs.retrofit.gson)
     implementation(libs.retrofit.scalars)
 
