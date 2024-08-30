@@ -21,6 +21,7 @@ object RetrofitManager {
 
     private val okHttpClient:OkHttpClient by lazy {
         OkHttpClient().newBuilder()
+//            .addInterceptor(UserAgentInterceptor())
             .addInterceptor(AuthInterceptor())
             .addInterceptor(ExceptionTransformInterceptor())
             .connectTimeout(TIME_OUT_SECONDS.toLong(),TimeUnit.SECONDS)

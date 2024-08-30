@@ -21,21 +21,26 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding,ExploreVM>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        viewModel.getData()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.data.collect{
                     logd(it)
                 }
             }
+
         }
         binding.btnQuest.setOnClickListener {
             viewModel.getData()
+        }
+        binding.btnDown.setOnClickListener {
+          viewModel.downLoad(requireContext())
         }
     }
 
     override fun lazyLoad(tag: String) {
         super.lazyLoad(tag)
-        viewModel.getData()
+
     }
 
 }

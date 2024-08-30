@@ -15,15 +15,16 @@ androidxlifecycle = "2.8.3"
 androidxNavigation = "2.7.7"
 androidxActivityKtx = "1.9.1"
 androidxFragmentKtx = "1.8.2"
-
-androidxTestJunit = "1.2.1"
-androidxTestEspresso = "3.6.1"
-
-junit = "4.13.2"
 databindingRuntime = "8.5.1"
 
 retrofit = "2.11.0"
 okhttp = "4.12.0"
+utilcodex = "1.31.1"
+
+androidxTestJunit = "1.2.1"
+androidxTestEspresso = "3.6.1"
+junit = "4.13.2"
+
 
 [libraries]
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
@@ -37,6 +38,7 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 
 androidx-activity-ktx = { group = "androidx.activity" , name = "activity-ktx" , version.ref = "androidxActivityKtx" }
 androidx-fgragment-ktx = { group = "androidx.fragment" , name = "fragment-ktx" ,version.ref = "androidxFragmentKtx" }
+blankj-utilcodex = { group = "com.blankj",name = "utilcodex",version.ref = "utilcodex" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestJunit"}

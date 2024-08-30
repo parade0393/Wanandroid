@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.retrofit.scalars)
 
+    implementation(libs.blankj.utilcodex)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.espresso)
