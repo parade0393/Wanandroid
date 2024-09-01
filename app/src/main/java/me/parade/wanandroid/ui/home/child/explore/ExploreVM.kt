@@ -3,6 +3,8 @@ package me.parade.wanandroid.ui.home.child.explore
 import android.content.Context
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseViewModel
@@ -18,8 +20,8 @@ class ExploreVM:BaseViewModel() {
     private val _data = MutableSharedFlow<TestBean>()
     val data = _data.asSharedFlow()
 
-    private val _down = MutableSharedFlow<DownloadResult>()
-    val down = _data.asSharedFlow()
+    private val _down = MutableStateFlow<DownloadResult>(DownloadResult.Idle)
+    val down:StateFlow<DownloadResult> = _down
 
     fun getData(){
         viewModelScope.launch {
@@ -35,17 +37,7 @@ class ExploreVM:BaseViewModel() {
         viewModelScope.launch {
             DownloadHelper.downloadFile(context,"http://218.29.175.190:8090/zwtjava//file/6447/other/20240830/13703937803/164917729/10-20240830164917729.jpg")
                 .collect{ result->
-                    when(result){
-                        is DownloadResult.Error -> {
-                            result.error.logd()
-                        }
-                        is DownloadResult.Progress -> {
-                            "${result.progress}-${result.totalBytes}-${result.downloadedBytes}".logd()
-                        }
-                        is DownloadResult.Success -> {
-                            result.fileName.logd()
-                        }
-                    }
+                    _down.emit(result)
                 }
         }
     }
