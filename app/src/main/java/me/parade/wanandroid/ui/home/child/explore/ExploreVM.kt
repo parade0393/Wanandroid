@@ -1,6 +1,7 @@
 package me.parade.wanandroid.ui.home.child.explore
 
 import android.content.Context
+import android.graphics.Bitmap
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,8 +10,8 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseViewModel
 import me.parade.lib_base.download.DownloadHelper
+import me.parade.lib_base.download.DownloadHelper.saveToAlbum
 import me.parade.lib_base.download.DownloadResult
-import me.parade.lib_base.ext.logd
 import me.parade.lib_base.helper.requestFlowResponse
 import me.parade.lib_base.net.RetrofitManager
 import me.parade.wanandroid.net.model.TestBean
@@ -22,6 +23,9 @@ class ExploreVM:BaseViewModel() {
 
     private val _down = MutableStateFlow<DownloadResult>(DownloadResult.Idle)
     val down:StateFlow<DownloadResult> = _down
+
+    private val _bitFlow = MutableStateFlow<DownloadResult>(DownloadResult.Idle)
+    val bitFloe:StateFlow<DownloadResult> = _bitFlow
 
     fun getData(){
         viewModelScope.launch {
@@ -40,5 +44,13 @@ class ExploreVM:BaseViewModel() {
                     _down.emit(result)
                 }
         }
+    }
+
+    fun saveBitMapToAlbum(bitMap:Bitmap,fileName:String,context: Context,childFolder:String,quality:Int){
+      viewModelScope.launch {
+          bitMap.saveToAlbum(context,fileName).collect{result->
+              _bitFlow.emit(result)
+          }
+      }
     }
 }
