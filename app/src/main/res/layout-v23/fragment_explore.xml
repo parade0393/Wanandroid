@@ -24,8 +24,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?colorSurface">
-
+            android:background="?colorSurface"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -49,7 +49,6 @@
         android:layout_height="wrap_content"
         android:text="@string/title_home" />
 
-
     <Button
         android:id="@+id/night"
         android:layout_width="wrap_content"
@@ -60,5 +59,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="白天"/>
+
 
 </LinearLayout>
