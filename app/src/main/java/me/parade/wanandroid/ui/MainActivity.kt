@@ -3,6 +3,7 @@ package me.parade.wanandroid.ui
 import android.os.Bundle
 import android.view.MenuItem
 import me.parade.lib_base.base.BaseActivity
+import me.parade.lib_base.base.BaseFragment
 import me.parade.wanandroid.R
 import me.parade.wanandroid.TestMainViewModel
 import me.parade.wanandroid.databinding.ActivityMainBinding
@@ -14,6 +15,9 @@ import me.parade.wanandroid.ui.project.ProjectFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding, TestMainViewModel>() {
 
+    companion object {
+        private const val KEY_CURRENT_FRAGMENT_INDEX = "key_current_fragment_index"
+    }
 
     private var activeFragmentIndex = -1
 
@@ -28,11 +32,26 @@ class MainActivity : BaseActivity<ActivityMainBinding, TestMainViewModel>() {
     override fun getLayoutResId() = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
-        switchFragment(0)
+        if (savedInstanceState == null){
+            switchFragment(0)
+        }
         binding.navView.also {
-//            it.itemIconTintList = null
             it.setOnItemSelectedListener(NavBottomViewDoubleClickListener(this::onBottomItemSelect,this::onBottomDoubleClick))
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(KEY_CURRENT_FRAGMENT_INDEX, activeFragmentIndex)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        fragmentList = fragmentList.map {
+            supportFragmentManager.findFragmentByTag(it.javaClass.simpleName) as? BaseFragment<*, *>
+                ?: it
+        }
+        switchFragment(savedInstanceState.getInt(KEY_CURRENT_FRAGMENT_INDEX, 0))
     }
 
     private fun onBottomItemSelect(item: MenuItem): Boolean {
@@ -78,4 +97,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, TestMainViewModel>() {
             else -> 0
         }
     }
+
+
 }
