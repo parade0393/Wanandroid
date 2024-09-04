@@ -6,6 +6,12 @@
     tools:context=".ui.navigator.NavigatorFragment">
 
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?colorOnPrimaryContainer"/>
+
+
     <TextView
         android:gravity="center"
         android:layout_width="match_parent"

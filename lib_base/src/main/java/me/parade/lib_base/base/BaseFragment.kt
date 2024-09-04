@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import androidx.core.view.WindowCompat
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -102,5 +104,16 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
     }
     open fun lazyLoad(tag: String){
         logd("${javaClass.simpleName}-loaded--$tag")
+    }
+
+    /**
+     * 设置状态栏字体颜色
+     * @param isDark true代表深色字体，false代表浅色字体
+     */
+    fun updateStatusBarAppearance(isDark:Boolean){
+        requireActivity().window?.let { window: Window ->
+            val insetsController = WindowCompat.getInsetsController(window,window.decorView)
+            insetsController.isAppearanceLightStatusBars = isDark
+        }
     }
 }

@@ -5,7 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.project.ProjectFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?colorPrimary"/>
+    
     <TextView
         android:gravity="center"
         android:layout_width="match_parent"

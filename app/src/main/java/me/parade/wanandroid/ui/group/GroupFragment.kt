@@ -8,7 +8,7 @@ import me.parade.wanandroid.databinding.FragmentGroupBinding
 
 class GroupFragment : BaseFragment<FragmentGroupBinding,EmptyViewModel>() {
     override fun initView(savedInstanceState: Bundle?) {
-
+        updateStatusBarAppearance(true)
     }
 
 

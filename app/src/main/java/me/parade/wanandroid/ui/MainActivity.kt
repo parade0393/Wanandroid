@@ -2,6 +2,7 @@ package me.parade.wanandroid.ui
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.activity.enableEdgeToEdge
 import me.parade.lib_base.base.BaseActivity
 import me.parade.lib_base.base.BaseFragment
 import me.parade.wanandroid.R
@@ -28,6 +29,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, TestMainViewModel>() {
         GroupFragment(),
         ProfileFragment()
     )
+
+    override fun beforeOnCreate(savedInstanceState: Bundle?) {
+        //开启全面屏
+        enableEdgeToEdge()
+    }
 
     override fun getLayoutResId() = R.layout.activity_main
 

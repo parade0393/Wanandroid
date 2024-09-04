@@ -16,6 +16,7 @@ abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity
     protected lateinit var viewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        beforeOnCreate(savedInstanceState)
         super.onCreate(savedInstanceState)
         binding = createBinding()
 
@@ -28,6 +29,13 @@ abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity
         (binding as? ViewDataBinding)?.lifecycleOwner = this
         //初始化数据和逻辑
         initView(savedInstanceState)
+    }
+
+    /**
+     * 在执行onCreate之前执行一些逻辑
+     */
+    open fun beforeOnCreate(savedInstanceState: Bundle?) {
+
     }
 
     private fun createBinding(): DB {
