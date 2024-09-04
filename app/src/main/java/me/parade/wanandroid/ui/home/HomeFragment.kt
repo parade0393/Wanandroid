@@ -38,4 +38,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,EmptyViewModel>() {
             }.also { it.attach() }
         }
     }
+
+    override fun lazyLoad(tag: String) {
+        updateStatusBarAppearance(true)
+    }
 }

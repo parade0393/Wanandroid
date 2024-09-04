@@ -9,6 +9,10 @@ import me.parade.wanandroid.databinding.FragmentProjectBinding
 class ProjectFragment : BaseFragment<FragmentProjectBinding,EmptyViewModel>() {
 
     override fun initView(savedInstanceState: Bundle?) {
+
+    }
+
+    override fun lazyLoad(tag: String) {
         updateStatusBarAppearance(false)
     }
 }

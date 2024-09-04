@@ -8,8 +8,10 @@ import me.parade.wanandroid.databinding.FragmentProfileBinding
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding,EmptyViewModel>() {
     override fun initView(savedInstanceState: Bundle?) {
-        updateStatusBarAppearance(true)
+
     }
 
-
+    override fun lazyLoad(tag: String) {
+        updateStatusBarAppearance(true)
+    }
 }

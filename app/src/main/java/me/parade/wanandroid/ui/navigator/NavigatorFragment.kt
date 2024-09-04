@@ -8,7 +8,10 @@ import me.parade.wanandroid.databinding.FragmentNavigatorBinding
 
 class NavigatorFragment : BaseFragment<FragmentNavigatorBinding,DemoVM>() {
     override fun initView(savedInstanceState: Bundle?) {
-        updateStatusBarAppearance(false)
+
     }
 
+    override fun lazyLoad(tag: String) {
+        updateStatusBarAppearance(false)
+    }
 }

@@ -8,8 +8,11 @@ import me.parade.wanandroid.databinding.FragmentGroupBinding
 
 class GroupFragment : BaseFragment<FragmentGroupBinding,EmptyViewModel>() {
     override fun initView(savedInstanceState: Bundle?) {
-        updateStatusBarAppearance(true)
+
     }
 
 
+    override fun lazyLoad(tag: String) {
+        updateStatusBarAppearance(true)
+    }
 }
