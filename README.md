@@ -18,7 +18,9 @@ collect 是一个挂起函数，它会一直收集流，直到流被关闭或者
 StateFlow 总是有一个当前值。当您重新订阅它时，它会立即发出最新的值 
 当你使用 Flow 时，所有 emit 的调用必须在同一个协程上下文中进行
 callbackFlow 可以在协程外部发射值，同时保证 Flow 的透明性。callbackFlow 本质上是一个安全的 Channel
-7. 主题
+7. LiveData
+   LiveData的粘性机制--说的通俗一点，就是先发送数据，后订阅，也可以接收到数据。
+8. 主题
    ?colorOnSurface--这种写法直接引用了当前主题中定义的属性
    ?android:attr/selectableItemBackground--这种写法引用了Android框架主题中定义的属性。android:前缀表示这是来自Android系统的属性，而不是来自你的应用或第三方库
    ?attr/colorPrimary--这种写法引用了当前主题中定义的属性。attr/前缀是可选的，所以这等同于 ?
