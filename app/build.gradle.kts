@@ -56,11 +56,15 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.swiperefresh)
 
     implementation(libs.retrofit){
         exclude(group = "com.squareup.okhttp3", module ="okhttp")
     }
+    implementation(libs.dsladapter)
     implementation(libs.okhttp.client)
+    implementation(libs.banner)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.espresso)

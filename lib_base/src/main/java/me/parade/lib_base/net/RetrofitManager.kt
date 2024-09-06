@@ -14,7 +14,7 @@ object RetrofitManager {
     private val serviceMap:ConcurrentHashMap<String,Any> = ConcurrentHashMap<String,Any>()
 
     //region 常量配置
-    private const val BASE_URL = "http://192.168.49.110:3000/api/"
+    private const val BASE_URL = "https://www.wanandroid.com/"
     private const val TIME_OUT_SECONDS = 30
     //endregion常量配置
 

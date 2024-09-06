@@ -25,3 +25,10 @@ callbackFlow 可以在协程外部发射值，同时保证 Flow 的透明性。c
    ?android:attr/selectableItemBackground--这种写法引用了Android框架主题中定义的属性。android:前缀表示这是来自Android系统的属性，而不是来自你的应用或第三方库
    ?attr/colorPrimary--这种写法引用了当前主题中定义的属性。attr/前缀是可选的，所以这等同于 ?
    ?[package]:attr/attributeName--这种写法允许你引用特定包中定义的属性。例如?com.google.android.material:attr/colorSurface：引用Material Design库中定义的属性
+9. gradle 8.0
+   配置maven仓库需要这样
+   ```properties
+   maven {
+   url = uri("https://jitpack.io")
+   }
+   ```
