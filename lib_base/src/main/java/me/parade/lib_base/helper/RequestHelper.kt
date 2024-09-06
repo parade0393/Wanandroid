@@ -18,11 +18,11 @@ import me.parade.lib_base.net.exception.ApiException
  * @param errorBlock 错误回调
  * @param requestCall 执行的请求
  * @param showLoading 开启和关闭加载框
- * @return 请求结果
+ * @return 请求结果直接返回[BaseResponse.data]
  */
 suspend fun <T> requestFlow(
-    errorBlock: ((Int?, String?) -> Unit)? = null,
     requestCall: suspend () -> BaseResponse<T>,
+    errorBlock: ((Int?, String?) -> Unit)? = null,
     showLoading: ((Boolean) -> Unit)? = null
 ): T? {
     var data: T? = null
@@ -40,6 +40,7 @@ suspend fun <T> requestFlow(
  * @param errorBlock 异常回调
  * @param showLoading dialog事件
  * @param dispatcher 请求的线程
+ * @return 返回flow包装的[BaseResponse]
  */
 suspend fun <T> requestFlowResponse(
     requestBlock:suspend ()->BaseResponse<T>,
