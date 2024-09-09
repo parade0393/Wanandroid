@@ -1,11 +1,12 @@
 package me.parade.lib_image
 
 data class ImageLoaderOptions(
-    val placeholder: Int? = null,       // 占位图
-    val error: Int? = null,             // 错误图
-    val cornerRadius: Float? = null,    // 圆角
-    val cacheStrategy: CacheStrategy = CacheStrategy.ALL, // 缓存策略
-    val isGif: Boolean = false          // 是否加载 GIF
+   var placeholder: Int? = null,       // 占位图
+   var error: Int? = null,             // 错误图
+   var cornerRadius: Float? = null,    // 圆角
+   var isCircle:Boolean = false,   //是否圆形图片
+   var cacheStrategy: CacheStrategy = CacheStrategy.ALL, // 缓存策略
+   var isGif: Boolean = false          // 是否加载 GIF
 )
 
 enum class CacheStrategy {

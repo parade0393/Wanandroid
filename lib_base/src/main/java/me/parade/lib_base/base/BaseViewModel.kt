@@ -28,5 +28,4 @@ abstract class BaseViewModel : ViewModel() {
             result(data)
         }
     }
-
 }

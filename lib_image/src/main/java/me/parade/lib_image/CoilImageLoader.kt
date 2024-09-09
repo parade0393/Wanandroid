@@ -5,6 +5,7 @@ import android.widget.ImageView
 import coil.decode.GifDecoder
 import coil.load
 import coil.request.CachePolicy
+import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 
 class CoilImageLoader(private val context: Context) : ImageLoader {
@@ -14,7 +15,7 @@ class CoilImageLoader(private val context: Context) : ImageLoader {
     }
 
     override fun loadImage(url: String, imageView: ImageView, options: ImageLoaderOptions) {
-        val requestBuilder = imageView.load(url) {
+        imageView.load(url) {
             // 设置占位图和错误图
             options.placeholder?.let { placeholder(it) }
             options.error?.let { error(it) }
@@ -22,6 +23,9 @@ class CoilImageLoader(private val context: Context) : ImageLoader {
             // 设置圆角
             options.cornerRadius?.let {
                 transformations(RoundedCornersTransformation(it))
+            }
+            if (options.isCircle){
+                transformations(CircleCropTransformation())
             }
 
             // 设置缓存策略

@@ -14,6 +14,15 @@ object ImageLoaderManager {
     }
 
     fun loadImage(url: String, imageView: ImageView, options: ImageLoaderOptions) {
-        imageLoader?.loadImage(url, imageView, options)
+        val finalOptions = DefaultImageLoaderOptions.DEFAULT.copy().apply {
+            options.placeholder?.let { placeholder = it }
+            options.error?.let { error = it }
+            options.cornerRadius?.let { cornerRadius = it }
+            cacheStrategy = options.cacheStrategy
+            isGif = options.isGif
+            isCircle = options.isCircle
+            cacheStrategy = options.cacheStrategy
+        }
+        imageLoader?.loadImage(url, imageView, finalOptions)
     }
 }

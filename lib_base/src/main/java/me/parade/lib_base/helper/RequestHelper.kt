@@ -20,7 +20,7 @@ import me.parade.lib_base.net.exception.ApiException
  * @param showLoading 开启和关闭加载框
  * @return 请求结果直接返回[BaseResponse.data]
  */
-suspend fun <T> requestFlow(
+suspend fun <T>  requestFlow(
     requestCall: suspend () -> BaseResponse<T>,
     errorBlock: ((Int?, String?) -> Unit)? = null,
     showLoading: ((Boolean) -> Unit)? = null
