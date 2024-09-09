@@ -32,3 +32,11 @@ callbackFlow 可以在协程外部发射值，同时保证 Flow 的透明性。c
    url = uri("https://jitpack.io")
    }
    ```
+10. lambda
+    Lambda 表达式的完整语法形式如下：
+   val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
+   lambda 表达式总是括在花括号中。
+   完整语法形式的参数声明放在花括号内，并有可选的类型标注。
+   函数体跟在一个 -> 之后。
+   如果推断出的该 lambda 的返回类型不是 Unit，那么该 lambda 主体中的最后一个（或可能是单个）表达式会视为返回值。
+   如果将所有可选标注都留下，看起来如下： val sum = { x: Int, y: Int -> x + y }

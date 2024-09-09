@@ -14,4 +14,8 @@ class NavigatorFragment : BaseFragment<FragmentNavigatorBinding,DemoVM>() {
     override fun lazyLoad(tag: String) {
         updateStatusBarAppearance(false)
     }
+
+    override fun initData() {
+
+    }
 }

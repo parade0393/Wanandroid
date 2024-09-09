@@ -84,6 +84,10 @@ class DemoFragment : BaseFragment<FragmentDemoBinding,DemoVM>() {
         }
     }
 
+    override fun initData() {
+
+    }
+
     override fun lazyLoad(tag: String) {
         super.lazyLoad(tag)
 

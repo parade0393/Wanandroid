@@ -15,4 +15,8 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding,EmptyViewModel>() {
     override fun lazyLoad(tag: String) {
         updateStatusBarAppearance(false)
     }
+
+    override fun initData() {
+
+    }
 }

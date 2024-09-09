@@ -20,4 +20,8 @@ class SquareFragment : BaseFragment<FragmentSquareBinding,EmptyViewModel>() {
 
     }
 
+    override fun initData() {
+
+    }
+
 }

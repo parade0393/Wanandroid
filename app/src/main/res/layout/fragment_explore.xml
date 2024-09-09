@@ -11,6 +11,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="200dp"
+        app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

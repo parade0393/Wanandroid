@@ -14,4 +14,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,EmptyViewModel>() {
     override fun lazyLoad(tag: String) {
         updateStatusBarAppearance(true)
     }
+
+    override fun initData() {
+
+    }
 }
