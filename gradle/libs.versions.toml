@@ -23,6 +23,8 @@ okhttp = "4.12.0"
 utilcodex = "1.31.1"
 dsladapter = "6.0.3"
 banner = "2.2.3"
+glide = "4.16.0"
+coil = "2.7.0"
 
 androidxTestJunit = "1.2.1"
 androidxTestEspresso = "3.6.1"
@@ -53,6 +55,9 @@ retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 retrofit-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "retrofit"}
 okhttp-client = { group = "com.squareup.okhttp3",name = "okhttp", version.ref = "okhttp" }
+glide = { group = "com.github.bumptech.glide" , name = "glide", version.ref = "glide" }
+coil = {group = "io.coil-kt", name = "coil" , version.ref = "coil" }
+coil-gif = {group = "io.coil-kt", name = "coil-gif" , version.ref = "coil" }
 
 dsladapter = { group = "com.github.angcyo", name = "DslAdapter", version.ref = "dsladapter"}
 banner = { group = "io.github.youth5201314", name = "banner",version.ref = "banner" }

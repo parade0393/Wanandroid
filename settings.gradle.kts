@@ -23,3 +23,4 @@ rootProject.name = "Wanandroid"
 include(":app")
 include(":lib_base")
 include(":plugin")
+include(":lib_image")
