@@ -17,9 +17,10 @@ object DefaultImageLoaderOptions {
     val DEFAULT = ImageLoaderOptions(
         placeholder = R.drawable.baseline_image_24_placeholder,
         error = R.drawable.baseline_broken_image_24_error,
-        cornerRadius = 0f,
+        cornerRadius = null,
         cacheStrategy = CacheStrategy.ALL,
-        isGif = false
+        isGif = false,
+        isCircle = false
     )
 }
 

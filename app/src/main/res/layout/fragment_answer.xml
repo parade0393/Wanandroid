@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+
     tools:context=".ui.home.child.answer.AnswerFragment">
 
-    <TextView
-        android:gravity="center"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/tab_home_answer" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="10dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+        <ImageView
+            android:id="@+id/ivCoil"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+        <ImageView
+            android:id="@+id/ivCorner"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+        <ImageView
+            android:id="@+id/ivCornerCoil"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+        <ImageView
+            android:id="@+id/ivRound"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+        <ImageView
+            android:id="@+id/ivRoundCoil"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+
+    </LinearLayout>
+
+
+
+</ScrollView>
