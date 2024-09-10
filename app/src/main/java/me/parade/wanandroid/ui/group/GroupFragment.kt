@@ -11,6 +11,10 @@ class GroupFragment : BaseFragment<FragmentGroupBinding,EmptyViewModel>() {
 
     }
 
+    override fun initData() {
+
+    }
+
 
     override fun lazyLoad(tag: String) {
         updateStatusBarAppearance(true)

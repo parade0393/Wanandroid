@@ -40,3 +40,4 @@ callbackFlow 可以在协程外部发射值，同时保证 Flow 的透明性。c
    函数体跟在一个 -> 之后。
    如果推断出的该 lambda 的返回类型不是 Unit，那么该 lambda 主体中的最后一个（或可能是单个）表达式会视为返回值。
    如果将所有可选标注都留下，看起来如下： val sum = { x: Int, y: Int -> x + y }
+11. minSdkVersion 为 21 或更高版本,系统会默认启用 MultiDex，并且您不需要 MultiDex 库

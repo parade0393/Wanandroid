@@ -9,11 +9,11 @@ object ImageLoaderManager {
         this.imageLoader = imageLoader
     }
 
-    fun loadImage(url: String, imageView: ImageView) {
-        imageLoader?.loadImage(url, imageView)
+    fun loadImage(url: String, imageView: ImageView,loader:ImageLoader? = null) {
+        (loader ?: imageLoader)?.loadImage(url,imageView)
     }
 
-    fun loadImage(url: String, imageView: ImageView, options: ImageLoaderOptions) {
+    fun loadImage(url: String, imageView: ImageView, options: ImageLoaderOptions,loader: ImageLoader? = null) {
         val finalOptions = DefaultImageLoaderOptions.DEFAULT.copy().apply {
             options.placeholder?.let { placeholder = it }
             options.error?.let { error = it }
@@ -23,6 +23,6 @@ object ImageLoaderManager {
             isCircle = options.isCircle
             cacheStrategy = options.cacheStrategy
         }
-        imageLoader?.loadImage(url, imageView, finalOptions)
+        (loader ?: imageLoader)?.loadImage(url,imageView,finalOptions)
     }
 }

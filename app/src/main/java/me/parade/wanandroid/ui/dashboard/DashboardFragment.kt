@@ -22,5 +22,9 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, TestMainViewMod
         }
     }
 
+    override fun initData() {
+
+    }
+
     override fun getCustomViewModelStore() = requireActivity().viewModelStore
 }
