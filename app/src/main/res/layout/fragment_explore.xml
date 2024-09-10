@@ -8,10 +8,15 @@
     tools:context=".ui.home.child.explore.ExploreFragment">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+    </LinearLayout>
+
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

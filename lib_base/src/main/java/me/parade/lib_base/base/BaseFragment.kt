@@ -49,7 +49,7 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView(savedInstanceState)
-
+        initData()
         super.onViewCreated(view, savedInstanceState)
     }
     /** 初始化试图的一些操作，比如RecyclerView的初始化等 */

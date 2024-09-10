@@ -4,13 +4,17 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.withResumed
+import com.google.android.material.carousel.CarouselLayoutManager
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseFragment
 import me.parade.lib_base.ext.logd
 import me.parade.wanandroid.databinding.FragmentExploreBinding
+import me.parade.wanandroid.net.model.Banner
 
 
 class ExploreFragment : BaseFragment<FragmentExploreBinding,ExploreVM>() {
+
+//    private val bannerAdapter by lazy { ImageAdapter(emptyList<Banner>()) }
 
     companion object{
         fun newInstance(): ExploreFragment = with(ExploreFragment()){
@@ -23,9 +27,10 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding,ExploreVM>() {
     override fun initView(savedInstanceState: Bundle?) {
         requestBanners()
 
-        with(binding.recycler){
-
-        }
+//        with(binding.recycler){
+//            adapter = bannerAdapter
+//            layoutManager = CarouselLayoutManager()
+//        }
     }
 
     override fun initData() {
@@ -34,6 +39,8 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding,ExploreVM>() {
                 viewModel.banners.collect{result->
                     withResumed {
                         if (result.isNotEmpty()){
+                            binding.recycler.layoutManager = CarouselLayoutManager()
+                            binding.recycler.adapter = ImageAdapter(result)
                             "${result.size}".logd()
                         }
                     }
