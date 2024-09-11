@@ -62,7 +62,8 @@ dependencies {
     implementation(libs.retrofit){
         exclude(group = "com.squareup.okhttp3", module ="okhttp")
     }
-    implementation(libs.dsladapter)
+    implementation(libs.angcyo.dsladapter)
+    implementation(libs.angcyo.dslitem)
     implementation(libs.okhttp.client)
     implementation(libs.banner)
 
