@@ -32,6 +32,7 @@ coil = "2.7.0"
 androidxTestJunit = "1.2.1"
 androidxTestEspresso = "3.6.1"
 junit = "4.13.2"
+activity = "1.9.2"
 
 
 [libraries]
@@ -65,6 +66,7 @@ angcyo-dsladapter = { group = "com.github.angcyo", name = "DslAdapter", version.
 angcyo-dslitem = { group = "com.github.angcyo", name = "DslItem", version.ref = "dslItem" }
 
 banner = { group = "io.github.youth5201314", name = "banner",version.ref = "banner" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
 
 [plugins]

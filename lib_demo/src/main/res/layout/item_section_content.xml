@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginRight="5dp">
+
+    <TextView
+        android:id="@+id/tv_section_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="?colorOnSurface"
+        tools:text="点击效果收到电话费大家好交电话费的地方 ifdg大幅度豆腐干豆腐干"/>
+
+</LinearLayout>
