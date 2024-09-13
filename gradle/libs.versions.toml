@@ -61,8 +61,8 @@ okhttp-client = { group = "com.squareup.okhttp3",name = "okhttp", version.ref = 
 glide = { group = "com.github.bumptech.glide" , name = "glide", version.ref = "glide" }
 coil = {group = "io.coil-kt", name = "coil" , version.ref = "coil" }
 coil-gif = {group = "io.coil-kt", name = "coil-gif" , version.ref = "coil" }
-angcyo-dsladapter = { group = "com.github.angcy", name = "DslAdapter", version.ref = "dsladapter" }
-angcyo-dslitem = { group = "com.github.angcy", name = "DslItem", version.ref = "dslItem" }
+angcyo-dsladapter = { group = "com.github.angcyo", name = "DslAdapter", version.ref = "dsladapter" }
+angcyo-dslitem = { group = "com.github.angcyo", name = "DslItem", version.ref = "dslItem" }
 
 banner = { group = "io.github.youth5201314", name = "banner",version.ref = "banner" }
 
