@@ -62,12 +62,13 @@ dependencies {
     implementation(libs.retrofit){
         exclude(group = "com.squareup.okhttp3", module ="okhttp")
     }
-    implementation(libs.angcyo.dsladapter)
-    implementation(libs.angcyo.dslitem)
+    implementation(libs.angcyo.dsladapter){
+        exclude(group = "androidx.recyclerview",module="recyclerview")
+    }
+    implementation(libs.angcyo.dslitem){
+        exclude(group="com.github.angcyo:DslAdapter",module="DslAdapter")
+    }
     implementation(libs.okhttp.client)
     implementation(libs.banner)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.junit)
-    androidTestImplementation(libs.androidx.test.espresso)
 }

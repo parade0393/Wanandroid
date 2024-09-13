@@ -46,6 +46,5 @@ dependencies {
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
-    implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 }
