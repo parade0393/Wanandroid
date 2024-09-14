@@ -1,5 +1,6 @@
 package me.parade.lib_demo
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import me.parade.lib_base.base.BaseActivity
@@ -12,7 +13,11 @@ class MainActivity : BaseActivity<ActivityMainBinding,EmptyViewModel>() {
     override fun initView(savedInstanceState: Bundle?) {
         binding.rcy.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = DemoAdapter(DataServer.getDemoData())
+            adapter = DemoAdapter(DataServer.getDemoData()){item->
+                item.targetClass?.let {
+                    startActivity(Intent(this@MainActivity,it))
+                }
+            }
         }
     }
 

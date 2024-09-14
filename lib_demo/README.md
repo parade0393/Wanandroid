@@ -1,1 +1,5 @@
 # 此模块是为了验证测试一些例子或者记录一些特殊的页面(不适合做成library)或者一些不太成熟的封装
+# RecyclerView.Adapter
+1. item首次出现会调用onCreateViewHolder，出现过的重复出现仅会调用onBindViewHolder，好像onCreateViewHolder调用的次数是有一定的，测试了30个item，前13个调用了onCreateViewHolder，再后来的就没有了
+2. 使用DiffUtils更新了某个item后，没使用Payloads，会同时调用onCreateViewHolder和onBindViewHolder
+3. 使用了payload更新了item的某个字段后，好像只调用了onBindViewHolder

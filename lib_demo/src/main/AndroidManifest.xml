@@ -9,6 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wanandroid">
         <activity
+            android:name=".recyclerview.diff.DiffThirdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".recyclerview.diff.DiffSecondActivity"
+            android:exported="false" />
+        <activity
             android:name=".recyclerview.diff.DiffDemoActivity"
             android:exported="false" />
         <activity
