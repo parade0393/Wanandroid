@@ -45,6 +45,8 @@ android {
 
 dependencies {
 
+    implementation(project(":lib_okhttp_log"))
+
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)

@@ -1,8 +1,10 @@
 package me.parade.lib_base.net
 
+import me.parade.lib_base.BuildConfig
 import me.parade.lib_base.net.converter.ErrorHandlerConverterFactory
 import me.parade.lib_base.net.interceptor.AuthInterceptor
 import me.parade.lib_base.net.interceptor.ExceptionTransformInterceptor
+import me.parade.lib_okhttp_log.AndroidLoggingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,6 +26,7 @@ object RetrofitManager {
 //            .addInterceptor(UserAgentInterceptor())
             .addInterceptor(AuthInterceptor())
             .addInterceptor(ExceptionTransformInterceptor())
+            .addInterceptor(AndroidLoggingInterceptor.build(BuildConfig.DEBUG))
             .connectTimeout(TIME_OUT_SECONDS.toLong(),TimeUnit.SECONDS)
             .readTimeout(TIME_OUT_SECONDS.toLong(),TimeUnit.SECONDS)
             .writeTimeout(TIME_OUT_SECONDS.toLong(),TimeUnit.SECONDS)
