@@ -18,6 +18,6 @@
         app:banner_indicator_selected_color="@color/md_theme_primary"
         app:banner_infinite_loop="true"
         app:banner_orientation="horizontal"
-        app:banner_radius="16dp"/>
+        app:banner_radius="6dp"/>
 
 </FrameLayout>

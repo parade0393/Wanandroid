@@ -28,7 +28,7 @@ class AnswerFragment : BaseFragment<FragmentAnswerBinding,EmptyViewModel>() {
             ImageLoaderOptions(cornerRadius = 100f)
         )
         val coilImageLoader = CoilImageLoader()
-        ImageLoaderManager.loadImage(imageUrl, binding.ivCoil,coilImageLoader)
+        ImageLoaderManager.loadImage(imageUrl, binding.ivCoil, loader = coilImageLoader)
         ImageLoaderManager.loadImage(imageUrl,binding.ivRoundCoil, ImageLoaderOptions(isCircle = true),coilImageLoader)
         ImageLoaderManager.loadImage(imageUrl,binding.ivCornerCoil,
             ImageLoaderOptions(cornerRadius = 100f),
