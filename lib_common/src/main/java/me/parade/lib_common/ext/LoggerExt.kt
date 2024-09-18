@@ -1,8 +1,8 @@
-package me.parade.lib_base.ext
+package me.parade.lib_common.ext
 
 
 import android.util.Log
-import me.parade.lib_base.BuildConfig
+import me.parade.lib_common.BuildConfig
 
 /**
  * @author : parade
@@ -32,7 +32,7 @@ fun logw(message:Any,tag: String = TAG) = log(LEVEL.W, tag, message.toString())
 fun loge(message:Any,tag: String = TAG) = log(LEVEL.E, tag, message.toString())
 
 
-private fun log(level: LEVEL, tag: String,message: String) {
+private fun log(level: LEVEL, tag: String, message: String) {
     if (!showLog) return
 
     val tagBuilder = StringBuilder()

@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelStore
 import androidx.viewbinding.ViewBinding
-import me.parade.lib_base.ext.logd
-import me.parade.lib_base.ext.logw
 import me.parade.lib_base.helper.ViewModelCreateHelper
+import me.parade.lib_common.ext.logd
+import me.parade.lib_common.ext.logw
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
@@ -62,7 +62,10 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
 
     protected open fun provideParameter(paramName: String, paramType: Class<*>): Any? {
         // 默认实现返回 null，子类应该重写这个方法来提供自定义参数
-        logw( "provideParameter not overridden for parameter: $paramName of type $paramType","BaseFragment")
+        logw(
+            "provideParameter not overridden for parameter: $paramName of type $paramType",
+            "BaseFragment"
+        )
         return null
     }
 
@@ -73,7 +76,7 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
 
     override fun onStop() {
         super.onStop()
-        logd("onStop--${javaClass.simpleName}")
+        me.parade.lib_common.ext.logd("onStop--${javaClass.simpleName}")
     }
 
     override fun onResume() {
@@ -105,7 +108,7 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
         }
     }
     open fun lazyLoad(tag: String){
-        logd("${javaClass.simpleName}-loaded--$tag")
+        me.parade.lib_common.ext.logd("${javaClass.simpleName}-loaded--$tag")
     }
 
     /**

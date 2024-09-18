@@ -17,6 +17,7 @@ androidxActivityKtx = "1.9.1"
 androidxFragmentKtx = "1.8.2"
 databindingRuntime = "8.5.1"
 androidxSwiperefresh = "1.2.0-alpha01"
+lifecyle = "2.8.5"
 
 
 
@@ -68,6 +69,7 @@ angcyo-dslitem = { group = "com.github.angcyo", name = "DslItem", version.ref = 
 banner = { group = "io.github.youth5201314", name = "banner",version.ref = "banner" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
+lifecycle-runtime = { group = "androidx.lifecycle" , name = "lifecycle-runtime-ktx", version.ref = "lifecyle"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin"}

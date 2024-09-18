@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import me.parade.lib_base.ext.logd
+import me.parade.lib_common.ext.logd
 import me.parade.lib_demo.R
 
 class ItemAdapter(private var items: List<Item>, private val onItemClick: (Int) -> Unit) :

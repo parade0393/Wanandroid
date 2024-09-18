@@ -10,7 +10,7 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import me.parade.lib_base.base.BaseViewModel
-import me.parade.lib_base.ext.loge
+import me.parade.lib_common.ext.loge
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -112,7 +112,7 @@ object ViewModelCreateHelper {
                     return constructor.newInstance(*params.toTypedArray()) as VM
                 } catch (e: Exception) {
                     // 记录异常信息，但继续尝试下一个构造函数
-                    loge(
+                    me.parade.lib_common.ext.loge(
 
                         "Failed to create ViewModel with constructor: ${constructor.toGenericString()}",
                         "ViewModelCreateHelper"

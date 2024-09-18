@@ -15,10 +15,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
-import me.parade.lib_base.ext.getBitmapFormat
-import me.parade.lib_base.ext.getFileNameByUrl
-import me.parade.lib_base.ext.getMimeTypeFromFromUrl
-import me.parade.lib_base.ext.isImageFile
+import me.parade.lib_common.ext.getBitmapFormat
+import me.parade.lib_common.ext.getFileNameByUrl
+import me.parade.lib_common.ext.getMimeTypeFromFromUrl
+import me.parade.lib_common.ext.isImageFile
 import me.parade.lib_base.net.RetrofitManager
 import me.parade.lib_base.net.service.Api
 import java.io.File

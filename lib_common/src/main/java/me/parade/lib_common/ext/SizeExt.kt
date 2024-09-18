@@ -1,4 +1,4 @@
-package me.parade.lib_base.ext
+package me.parade.lib_common.ext
 
 import android.content.res.Resources
 import android.util.TypedValue

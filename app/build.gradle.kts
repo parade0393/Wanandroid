@@ -48,6 +48,7 @@ dependencies {
 
     implementation(project(":lib_base"))
     implementation(project(":lib_image"))
+    implementation(project(":lib_common"))
 
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
@@ -70,5 +71,6 @@ dependencies {
     }
     implementation(libs.okhttp.client)
     implementation(libs.banner)
+
 
 }

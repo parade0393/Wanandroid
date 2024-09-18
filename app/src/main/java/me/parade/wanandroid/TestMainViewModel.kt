@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import me.parade.lib_base.base.BaseViewModel
-import me.parade.lib_base.ext.logd
+import me.parade.lib_common.ext.logd
 
 class TestMainViewModel(private val app:Application?,private val savedStateHandle:SavedStateHandle):
     BaseViewModel() {
@@ -19,7 +19,7 @@ class TestMainViewModel(private val app:Application?,private val savedStateHandl
 
 
     fun increment() {
-        logd( "increment: ${app?.cacheDir}")
+        me.parade.lib_common.ext.logd("increment: ${app?.cacheDir}")
         val currentCount = _count.value ?: 0
         _count.value = currentCount + 1
     }

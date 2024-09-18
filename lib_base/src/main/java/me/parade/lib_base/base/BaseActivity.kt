@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
-import me.parade.lib_base.ext.logw
 import me.parade.lib_base.helper.ViewModelCreateHelper
+import me.parade.lib_common.ext.logw
 import java.lang.reflect.ParameterizedType
 
 
@@ -66,7 +66,10 @@ abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity
 
     protected open fun provideParameter(paramName: String, paramType: Class<*>): Any? {
         // 默认实现返回 null，子类应该重写这个方法来提供自定义参数
-        logw( "provideParameter not overridden for parameter: $paramName of type $paramType","BaseActivity")
+        logw(
+            "provideParameter not overridden for parameter: $paramName of type $paramType",
+            "BaseActivity"
+        )
         return null
     }
 }

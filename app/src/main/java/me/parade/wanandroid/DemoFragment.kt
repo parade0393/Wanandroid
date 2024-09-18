@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseFragment
 import me.parade.lib_base.download.DownloadResult
-import me.parade.lib_base.ext.logd
+import me.parade.lib_common.ext.logd
 import me.parade.wanandroid.databinding.FragmentDemoBinding
 
 

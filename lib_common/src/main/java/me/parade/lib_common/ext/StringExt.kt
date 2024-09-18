@@ -1,9 +1,8 @@
-package me.parade.lib_base.ext
+package me.parade.lib_common.ext
 
 import android.graphics.Bitmap
 import android.os.Build
 import android.webkit.MimeTypeMap
-import com.blankj.utilcode.util.FileUtils
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import java.security.MessageDigest
@@ -14,7 +13,6 @@ import java.util.regex.Pattern
  */
 fun String.getFileNameByUrl():String{
    if (this.isBlank()) return ""
-    FileUtils.getFileName(this)
     return this.substringAfterLast("/","")
 }
 

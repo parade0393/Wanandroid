@@ -46,6 +46,7 @@ android {
 dependencies {
 
     implementation(project(":lib_okhttp_log"))
+    implementation(project(":lib_common"))
 
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,4 +1,4 @@
-package me.parade.lib_base.dialog;
+package me.parade.lib_common.dialog;
 
 import android.app.Dialog
 import androidx.lifecycle.DefaultLifecycleObserver
