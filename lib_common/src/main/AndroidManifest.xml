@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+<!--    包可见性-->
+    <queries>
+        <!--微信-->
+        <package android:name="com.tencent.mm" />
+        <package android:name="com.tencent.mobileqq" />
+        <package android:name="com.sina.weibo" />
+        <package android:name="com.tencent.wework" />
+        <package android:name="com.qzone" />
+        <package android:name="com.alibaba.android.rimet" />
+        <!--支付宝-->
+        <package android:name="com.eg.android.AlipayGphone" />
+        <package android:name="com.instagram.android" />
+        <!--百度地图-->
+        <package android:name="com.baidu.BaiduMap"/>
+        <!--高德地图-->
+        <package android:name="com.autonavi.minimap"/>
+        <!--腾讯地图-->
+        <package android:name="com.tencent.map"/>
+    </queries>
 </manifest>
