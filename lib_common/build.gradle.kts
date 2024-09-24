@@ -39,4 +39,6 @@ android {
 dependencies {
     compileOnly(libs.retrofit.gson)
     compileOnly(libs.lifecycle.runtime)
+    compileOnly(libs.androidx.appcompat)
+    compileOnly(libs.androidx.swiperefresh)
 }
