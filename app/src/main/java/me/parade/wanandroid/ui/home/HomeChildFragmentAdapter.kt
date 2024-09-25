@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import me.parade.wanandroid.ui.home.child.answer.AnswerFragment
 import me.parade.wanandroid.ui.home.child.explore.ExploreFragment
 import me.parade.wanandroid.ui.home.child.square.SquareFragment
 
@@ -19,7 +18,6 @@ class HomeChildFragmentAdapter(
        return when (position){
            0 -> ExploreFragment.newInstance()
            1 -> SquareFragment.newInstance()
-           2 -> AnswerFragment.newInstance()
            else -> ExploreFragment.newInstance()
        }
     }
