@@ -18,6 +18,37 @@ collect 是一个挂起函数，它会一直收集流，直到流被关闭或者
 StateFlow 总是有一个当前值。当您重新订阅它时，它会立即发出最新的值 
 当你使用 Flow 时，所有 emit 的调用必须在同一个协程上下文中进行
 callbackFlow 可以在协程外部发射值，同时保证 Flow 的透明性。callbackFlow 本质上是一个安全的 Channel
+flow在ac或者frag里的不同使用
+```kotlin
+//stateFlow
+lifecycleScope.launch {
+   repeatOnLifecycle(Lifecycle.State.STARTED){
+      viewModel.banners.collect{
+         //针对一次性数据(常见的UI场景,接口返回数据然后更新UI)重新回到前台后会重新执行collect,会造成UI浪费
+          //针对流式数据，比如定时器或者一直定位的数据，重新回到前台后collect到最新的数据，在后台不会更新UI
+         binding.banner.setDatas(it)
+      }
+   }
+}
+viewModel.stateFlow.collect {
+   //退到后台后flow会产生新数据，但是重新回到前台后这里收不到
+   if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+      binding.tvTime.text = it.toString()
+      "update：$it in UI".logd()
+   }
+}
+//使用LiveData没有上述两个问题，感觉挺完美，目前还没遇到粘性带来的坑
+//SharedFlow sharedFlow可用作EventBus来用? 并且sharedFlow无法获取其值
+lifecycleScope.launch {
+   repeatOnLifecycle(Lifecycle.State.STARTED){
+      viewModel.banners.collect{
+         //针对一次性数据(常见的UI场景,接口返回数据然后更新UI)后台更新数据后重新回到前台不会更新UI
+         //针对流式数据，比如定时器或者一直定位的数据，重新回到前台后collect到最新的数据，在后台不会更新UI
+         binding.banner.setDatas(it)
+      }
+   }
+}
+```
 7. LiveData
    LiveData的粘性机制--说的通俗一点，就是先发送数据，后订阅，也可以接收到数据。
 8. 主题

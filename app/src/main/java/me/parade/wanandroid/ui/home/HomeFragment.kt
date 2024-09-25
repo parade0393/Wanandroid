@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.withStarted
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.youth.banner.adapter.BannerImageAdapter
@@ -74,6 +75,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>() {
         requestBanners()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
+                withStarted {  }
                 viewModel.banners.collect{
                     //重新回到前台后会重新collect,屏幕旋转后会重新网络请求，重新collect
                     binding.banner.setDatas(it)
