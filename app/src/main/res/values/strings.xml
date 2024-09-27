@@ -10,4 +10,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="tab_home_answer">问答</string>
     <string name="tab_home_square">广场</string>
+    <string name="article_tag_top">置顶</string>
+    <string name="article_tag_new">新</string>
 </resources>

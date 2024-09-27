@@ -18,4 +18,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,EmptyViewModel>() {
     override fun initData() {
 
     }
+
+    override fun initObserver() {
+
+    }
 }

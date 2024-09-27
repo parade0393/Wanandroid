@@ -42,11 +42,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private lateinit var childAdapter: HomeChildFragmentAdapter
 
     override fun initView(savedInstanceState: Bundle?) {
-//        ViewCompat.setOnApplyWindowInsetsListener(binding.homeTab){v,insets->
-//            val stateBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
-//            v.setPadding(stateBars.left,stateBars.top,stateBars.right,stateBars.bottom)
-//            insets
-//        }
+        initTabAndVp()
+        initBanner()
+    }
+
+    private fun initBanner() {
+        binding.banner.setAdapter(bannerAdapter)
+            .addBannerLifecycleObserver(this@HomeFragment)
+            .setIndicator(CircleIndicator(requireContext()))
+    }
+
+    private fun initTabAndVp() {
         val items = listOf(
             getString(R.string.title_home),
             getString(R.string.tab_home_square),
@@ -59,23 +65,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             TabLayoutMediator(homeTab, homeVp2) { tab: TabLayout.Tab, position: Int ->
                 tab.text = items[position]
             }.also { it.attach() }
-
-            banner.setAdapter(bannerAdapter)
-                .addBannerLifecycleObserver(this@HomeFragment)
-                .setIndicator(CircleIndicator(requireContext()))
         }
     }
 
     override fun initData() {
-        requestBanners()
-        viewModel.banners.observe(this){
-            binding.banner.setDatas(it)
-        }
-
+        viewModel.getBannerData()
     }
 
-    private fun requestBanners() {
-        viewModel.getBannerData()
+    override fun initObserver() {
+        viewModel.banners.observe(this) {
+            binding.banner.setDatas(it)
+        }
     }
 
     override fun lazyLoad(tag: String) {

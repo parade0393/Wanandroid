@@ -11,4 +11,6 @@
     <string name="title_profile">Me</string>
     <string name="tab_home_answer">Answer</string>
     <string name="tab_home_square">Square</string>
+    <string name="article_tag_top">Top</string>
+    <string name="article_tag_new">new</string>
 </resources>

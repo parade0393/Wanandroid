@@ -18,4 +18,8 @@ class NavigatorFragment : BaseFragment<FragmentNavigatorBinding,DemoVM>() {
     override fun initData() {
 
     }
+
+    override fun initObserver() {
+
+    }
 }

@@ -19,22 +19,23 @@ private enum class LEVEL {
     V, D, I, W, E
 }
 
-fun String.logv(tag: String = TAG) = log(LEVEL.V, tag, this)
-fun String.logd(tag: String = TAG) = log(LEVEL.D, tag, this)
-fun String.logi(tag: String = TAG) = log(LEVEL.I, tag, this)
-fun String.logw(tag: String = TAG) = log(LEVEL.W, tag, this)
-fun String.loge(tag: String = TAG) = log(LEVEL.E, tag, this)
+fun String.logv(tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.V, tag, this,isPrint)
+fun String.logd(tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.D, tag, this,isPrint)
+fun String.logi(tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.I, tag, this,isPrint)
+fun String.logw(tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.W, tag, this,isPrint)
+fun String.loge(tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.E, tag, this,isPrint)
 
-fun logv(message:Any,tag: String = TAG) = log(LEVEL.V, tag, message.toString())
-fun logd(message:Any,tag: String = TAG) = log(LEVEL.D, tag, message.toString())
-fun logi(message:Any,tag: String = TAG) = log(LEVEL.I, tag, message.toString())
-fun logw(message:Any,tag: String = TAG) = log(LEVEL.W, tag, message.toString())
-fun loge(message:Any,tag: String = TAG) = log(LEVEL.E, tag, message.toString())
+fun logv(message:Any,tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.V, tag, message.toString(),isPrint)
+fun logd(message:Any,tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.D, tag, message.toString(),isPrint)
+fun logi(message:Any,tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.I, tag, message.toString(),isPrint)
+fun logw(message:Any,tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.W, tag, message.toString(),isPrint)
+fun loge(message:Any,tag: String = TAG,isPrint:Boolean = false) = log(LEVEL.E, tag, message.toString(),isPrint)
 
 
-private fun log(level: LEVEL, tag: String, message: String) {
-    if (!showLog) return
-
+private fun log(level: LEVEL, tag: String, message: String,isPrint:Boolean = false) {
+    if (isPrint){
+        if (!showLog) return
+    }
     val tagBuilder = StringBuilder()
     tagBuilder.append(tag)
 

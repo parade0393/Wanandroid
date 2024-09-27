@@ -88,6 +88,10 @@ class DemoFragment : BaseFragment<FragmentDemoBinding,DemoVM>() {
 
     }
 
+    override fun initObserver() {
+
+    }
+
     override fun lazyLoad(tag: String) {
         super.lazyLoad(tag)
 

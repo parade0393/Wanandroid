@@ -2,43 +2,20 @@ package me.parade.wanandroid.ui.home.child.explore
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
-import com.youth.banner.adapter.BannerImageAdapter
-import com.youth.banner.holder.BannerImageHolder
+import com.angcyo.dsladapter.data.updateSingleData
 import me.parade.lib_base.base.BaseFragment
-import me.parade.lib_common.ext.logd
-import me.parade.lib_image.ImageLoaderManager
 import me.parade.wanandroid.databinding.FragmentExploreBinding
-import me.parade.wanandroid.net.model.Banner
+import me.parade.wanandroid.net.model.ArticleInfo
 
 
 class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreVM>() {
 
 
-    private val bannerAdapter: BannerImageAdapter<Banner> = object : BannerImageAdapter<Banner>(
-        emptyList()
-    ) {
-        override fun onBindView(
-            holder: BannerImageHolder?,
-            data: Banner?,
-            position: Int,
-            size: Int
-        ) {
-            holder?.imageView?.let { image ->
-                data?.let { item ->
-                    ImageLoaderManager.loadImage(item.imagePath, image)
-                }
-
-            }
-        }
-
-    }.apply {
-        setOnBannerListener { data, position ->
-            data.url.logd()
-        }
-    }
-
     private val dslAdapter: DslAdapter by lazy { DslAdapter() }
+    private var loadPage = 0
+    private val pageSize = 10
 
     companion object {
         fun newInstance(): ExploreFragment = with(ExploreFragment()) {
@@ -46,41 +23,35 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreVM>() {
             this
         }
 
-        val TAG_UPDATE_BANNER = "tag_update_banner"
     }
 
 
     override fun initView(savedInstanceState: Bundle?) {
-//        requestBanners()
-//        binding.recycler.apply {
-//            layoutManager = LinearLayoutManager(requireContext())
-//            adapter = dslAdapter.apply {
-//                render {
-//                    dslItem(DslBannerItem(bannerAdapter,this@ExploreFragment)).apply {
-//                        itemTag = TAG_UPDATE_BANNER
-//                    }
-//                }
-//            }
-//        }
+        dslAdapter.dslLoadMoreItem.onLoadMore = {
+            loadPage++
+            viewModel.getArticleList(loadPage)
+        }
+
+        binding.recycler.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = dslAdapter
+        }
     }
 
     override fun initData() {
-//        lifecycleScope.launch {
-//            launch {
-//                viewModel.banners.collect { result ->
-//                    dslAdapter.findItemByTag(TAG_UPDATE_BANNER).apply {
-//                        if (this is DslBannerItem) {
-//                            bannerList = result
-//                            updateAdapterItem(TAG_UPDATE_BANNER)
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        viewModel.getArticleList(loadPage,pageSize)
     }
 
-    private fun requestBanners() {
-        viewModel.getBannerData()
+    override fun initObserver() {
+        viewModel.articleList.observe(viewLifecycleOwner){
+            dslAdapter.updateSingleData<DslHomeArticleItem>(it.datas,loadPage,pageSize){ data->
+                data?.let { item->
+                    (item as? ArticleInfo)?.let { info ->
+                        articleInfo = info
+                    }
+                }
+            }
+        }
     }
 
 

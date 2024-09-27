@@ -40,4 +40,8 @@ class AnswerFragment : BaseFragment<FragmentAnswerBinding,EmptyViewModel>() {
 
     }
 
+    override fun initObserver() {
+
+    }
+
 }

@@ -19,4 +19,8 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding,EmptyViewModel>() {
     override fun initData() {
 
     }
+
+    override fun initObserver() {
+
+    }
 }

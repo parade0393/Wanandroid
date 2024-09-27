@@ -1,8 +1,9 @@
 package me.parade.wanandroid.net.service
 
 import me.parade.lib_base.net.BaseResponse
-import me.parade.wanandroid.net.model.ArticleList
+import me.parade.wanandroid.net.model.ArticleInfo
 import me.parade.wanandroid.net.model.Banner
+import me.parade.wanandroid.net.model.PageResponse
 import me.parade.wanandroid.net.model.TestBean
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,5 +25,14 @@ interface HomeService {
     suspend fun getHomeList(
         @Path("page") page: Int,
         @Query("page_size") pageSize: Int
-    ): BaseResponse<ArticleList>
+    ): BaseResponse<PageResponse<ArticleInfo>>
+
+    /**
+     * 广场文章
+     */
+    @GET("user_article/list/{pageNo}/json")
+    suspend fun getSquarePageList(
+        @Path("pageNo") pageNo: Int,
+        @Query("page_size") pageSize: Int
+    ):  BaseResponse<PageResponse<ArticleInfo>>
 }

@@ -55,12 +55,19 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView(savedInstanceState)
         initData()
+        initObserver()
         super.onViewCreated(view, savedInstanceState)
     }
+
     /** 初始化试图的一些操作，比如RecyclerView的初始化等 */
     abstract fun initView(savedInstanceState: Bundle?)
+    /**网络请求*/
     abstract fun  initData()
+    /** 收集或者观察数据 */
+    abstract fun initObserver()
 
+
+    /** 如果需要和activity共享ViewModel需要重写这个方法 */
     protected open fun getCustomViewModelStore(): ViewModelStore {
         return viewModelStore
     }
@@ -69,7 +76,8 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
         // 默认实现返回 null，子类应该重写这个方法来提供自定义参数
         logw(
             "provideParameter not overridden for parameter: $paramName of type $paramType",
-            "BaseFragment"
+            "BaseFragment",
+            true
         )
         return null
     }
@@ -115,6 +123,8 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
             }
         }
     }
+
+    /** 页面真正可见的时候执行一些逻辑 */
     open fun lazyLoad(tag: String){
         logd("${javaClass.simpleName}-loaded--$tag")
     }

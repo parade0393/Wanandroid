@@ -1,7 +1,10 @@
 package me.parade.lib_common.ext
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import android.webkit.MimeTypeMap
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
@@ -137,5 +140,14 @@ fun String.isValidateJson(): Boolean {
         return false
     }
     return jsonElement.isJsonArray || jsonElement.isJsonObject || jsonElement.isJsonPrimitive
+}
+
+fun String.toDisplayHtml(@SuppressLint("InlinedApi") flags:Int = Html.FROM_HTML_MODE_LEGACY):Spanned{
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(this, flags)
+    } else {
+        @Suppress("DEPRECATION")
+        Html.fromHtml(this)
+    }
 }
 
