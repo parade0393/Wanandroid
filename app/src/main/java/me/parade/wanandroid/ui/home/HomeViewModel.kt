@@ -1,7 +1,7 @@
 package me.parade.wanandroid.ui.home
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import me.parade.lib_base.base.BaseViewModel
 import me.parade.lib_base.net.RetrofitManager
 import me.parade.lib_common.ext.logd
@@ -10,8 +10,8 @@ import me.parade.wanandroid.net.service.HomeService
 
 class HomeViewModel : BaseViewModel() {
 
-    private val _banners = MutableStateFlow<List<Banner>>(emptyList())
-    val banners = _banners.asStateFlow()
+    private val _banners = MutableLiveData<List<Banner>>(emptyList())
+    val banners:LiveData<List<Banner>> = _banners
 
 
 
