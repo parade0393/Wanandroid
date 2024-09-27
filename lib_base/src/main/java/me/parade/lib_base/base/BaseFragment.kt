@@ -23,6 +23,11 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
 
     protected lateinit var viewModel: VM
 
+    private var _isVisibleToUser = false
+
+    val visibleToUser
+        get() = _isVisibleToUser
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -76,7 +81,7 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
 
     override fun onStop() {
         super.onStop()
-        me.parade.lib_common.ext.logd("onStop--${javaClass.simpleName}")
+        logd("onStop--${javaClass.simpleName}")
     }
 
     override fun onResume() {
@@ -93,14 +98,17 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
     }
 
     private fun onVisible(tag:String,hidden: Boolean = false){
+        _isVisibleToUser = false
         if(tag == "onResume"){
             if (isVisible){
                 // onResume调用且可见时
+                _isVisibleToUser = true
                 lazyLoad(tag)
             }
         }else{
             if(!hidden){
                 if(lifecycle.currentState == Lifecycle.State.RESUMED){
+                    _isVisibleToUser = true
                     //可见且处于RESUME状态时
                     lazyLoad(tag)
                 }
@@ -108,7 +116,7 @@ abstract class BaseFragment<DB: ViewBinding,VM: BaseViewModel>:Fragment() {
         }
     }
     open fun lazyLoad(tag: String){
-        me.parade.lib_common.ext.logd("${javaClass.simpleName}-loaded--$tag")
+        logd("${javaClass.simpleName}-loaded--$tag")
     }
 
     /**
