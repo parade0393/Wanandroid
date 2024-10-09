@@ -26,7 +26,7 @@ class DslHomeArticleItem : DslAdapterItem() {
         payloads: List<Any>
     ) {
         super.onItemBind(itemHolder, itemPosition, adapterItem, payloads)
-        itemBinding = itemBinding ?: DslArticleHomeItemBinding.bind(itemHolder.itemView)
+        itemBinding =  DslArticleHomeItemBinding.bind(itemHolder.itemView)
         itemBinding?.apply {
             articleInfo?.let { bean ->
                 tvAuthor.text = bean.articleAuthor
