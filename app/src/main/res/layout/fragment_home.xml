@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
+            app:contentScrim="?colorSurface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <com.youth.banner.Banner
