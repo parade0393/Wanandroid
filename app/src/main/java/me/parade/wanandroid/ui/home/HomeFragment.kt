@@ -3,6 +3,8 @@ package me.parade.wanandroid.ui.home
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.scwang.smart.refresh.layout.api.RefreshLayout
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
@@ -13,7 +15,7 @@ import me.parade.wanandroid.R
 import me.parade.wanandroid.databinding.FragmentHomeBinding
 import me.parade.wanandroid.net.model.Banner
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),OnRefreshListener {
 
     private val bannerAdapter: BannerImageAdapter<Banner> = object : BannerImageAdapter<Banner>(
         emptyList()
@@ -42,6 +44,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private lateinit var childAdapter: HomeChildFragmentAdapter
 
     override fun initView(savedInstanceState: Bundle?) {
+        binding.refreshLayout.apply {
+            autoRefresh()
+            setEnableRefresh(true)
+            setEnableLoadMore(false)
+            setOnRefreshListener(this@HomeFragment)
+        }
         initTabAndVp()
         initBanner()
     }
@@ -69,16 +77,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     override fun initData() {
-        viewModel.getBannerData()
+//        viewModel.getBannerData()
     }
 
     override fun initObserver() {
         viewModel.banners.observe(this) {
             binding.banner.setDatas(it)
+            binding.refreshLayout.finishRefresh()
         }
     }
 
     override fun lazyLoad(tag: String) {
         updateStatusBarAppearance(true)
+    }
+
+    override fun onRefresh(refreshLayout: RefreshLayout) {
+        refresh()
+    }
+
+
+    private fun refresh(){
+        viewModel.getBannerData()
     }
 }

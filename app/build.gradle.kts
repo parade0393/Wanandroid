@@ -60,6 +60,10 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefresh)
 
+    implementation(libs.refresh.layout.kernel)
+    implementation(libs.refresh.header.classics)
+    implementation(libs.refresh.footer.classics)
+
     implementation(libs.retrofit){
         exclude(group = "com.squareup.okhttp3", module ="okhttp")
     }
