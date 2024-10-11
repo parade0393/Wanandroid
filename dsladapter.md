@@ -1,0 +1,2 @@
+1. 单一类型列表更新数据使用dslAdapter.loadDataEnd，alwaysLoadMore设置true，在数据量大于每页的请求量的时候才会加载更多，在initItem里可以设置所有关于item的配置，数据，分割线等
+2. 分割线：首先rv设置DslItemDecoration

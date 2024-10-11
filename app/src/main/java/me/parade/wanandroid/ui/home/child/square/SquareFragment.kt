@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
+import com.angcyo.dsladapter.DslItemDecoration
 import com.angcyo.dsladapter.data.Page
 import com.angcyo.dsladapter.data.loadDataEnd
 import me.parade.lib_base.base.BaseFragment
+import me.parade.lib_common.ext.px
 import me.parade.wanandroid.databinding.FragmentSquareBinding
 import me.parade.wanandroid.ui.home.child.explore.DslHomeArticleItem
 
@@ -33,6 +35,7 @@ class SquareFragment : BaseFragment<FragmentSquareBinding,SquareVM>() {
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = dslAdapter
+            addItemDecoration(DslItemDecoration())
         }
     }
 
@@ -48,6 +51,9 @@ class SquareFragment : BaseFragment<FragmentSquareBinding,SquareVM>() {
                 requestPageIndex = loadPage
             },true){
                 articleInfo = it
+                itemBottomInsert = 10.px
+                itemLeftInsert = 10.px
+                itemRightInsert = 10.px
             }
         }
     }
