@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
+import com.angcyo.dsladapter.DslAdapterStatusItem
 import com.angcyo.dsladapter.DslItemDecoration
 import com.angcyo.dsladapter.data.Page
 import com.angcyo.dsladapter.data.loadDataEnd
@@ -40,6 +41,9 @@ class SquareFragment : BaseFragment<FragmentSquareBinding,SquareVM>() {
     }
 
     override fun initData() {
+        dslAdapter.render {
+            setAdapterStatus(DslAdapterStatusItem.ADAPTER_STATUS_LOADING)
+        }
         viewModel.getArticleList(loadPage,pageSize)
     }
 
