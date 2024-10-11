@@ -11,7 +11,7 @@ import me.parade.wanandroid.net.service.HomeService
 
 class HomeViewModel : BaseViewModel() {
 
-    private val _banners = MutableLiveData<List<Banner>>(emptyList())
+    private val _banners = MutableLiveData<List<Banner>>()
     val banners:LiveData<List<Banner>> = _banners
 
     private val _articleList = MutableLiveData<PageResponse<ArticleInfo>>();
