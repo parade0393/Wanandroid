@@ -51,6 +51,7 @@ lifecycleScope.launch {
 ```
 7. LiveData
    LiveData的粘性机制--说的通俗一点，就是先发送数据，后订阅，也可以接收到数据。
+   使用LiveData，可以有初始值，也可以没有初始值，如果有初始值，那么mVersion会加1，那么还没有setValue，观察者就可以收到值
 8. 主题
    ?colorOnSurface--这种写法直接引用了当前主题中定义的属性
    ?android:attr/selectableItemBackground--这种写法引用了Android框架主题中定义的属性。android:前缀表示这是来自Android系统的属性，而不是来自你的应用或第三方库
