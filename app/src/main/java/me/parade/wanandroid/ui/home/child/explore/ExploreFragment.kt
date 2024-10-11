@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
-import com.angcyo.dsladapter.data.updateSingleData
+import com.angcyo.dsladapter.data.Page
+import com.angcyo.dsladapter.data.loadDataEnd
 import me.parade.lib_base.base.BaseFragment
 import me.parade.wanandroid.databinding.FragmentExploreBinding
-import me.parade.wanandroid.net.model.ArticleInfo
 
 
 class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreVM>() {
@@ -43,13 +43,13 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreVM>() {
     }
 
     override fun initObserver() {
-        viewModel.articleList.observe(viewLifecycleOwner){
-            dslAdapter.updateSingleData<DslHomeArticleItem>(it.datas,loadPage,pageSize){ data->
-                data?.let { item->
-                    (item as? ArticleInfo)?.let { info ->
-                        articleInfo = info
-                    }
-                }
+        viewModel.articleList.observe(viewLifecycleOwner){bean ->
+            dslAdapter.loadDataEnd(DslHomeArticleItem::class,bean.datas,null, Page().apply {
+                firstPageIndex = 0
+                requestPageSize = pageSize
+                requestPageIndex = loadPage
+            },true){
+                articleInfo = it
             }
         }
     }
