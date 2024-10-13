@@ -35,4 +35,10 @@ interface HomeService {
         @Path("pageNo") pageNo: Int,
         @Query("page_size") pageSize: Int
     ):  BaseResponse<PageResponse<ArticleInfo>>
+
+    /**
+     * 问答列表
+     */
+    @GET("wenda/list/{pageNo}/json")
+    suspend fun getAnswerPageList(@Path("pageNo") pageNo: Int, @Query("page_size") pageSize: Int): BaseResponse<PageResponse<ArticleInfo>>
 }

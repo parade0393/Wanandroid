@@ -9,6 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wanandroid">
         <activity
+            android:name=".coor.CoorDemo2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".coor.CoorDemo1Activity"
+            android:exported="false" />
+        <activity
             android:name=".flow.FlowDemoActivity"
             android:exported="false" />
         <activity
