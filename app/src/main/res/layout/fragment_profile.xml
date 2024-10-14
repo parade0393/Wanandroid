@@ -47,62 +47,64 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <View
+                    <FrameLayout
                         android:id="@+id/v_bg"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/bg_mine_head"
-                        app:layout_collapseMode="parallax"
+                        android:layout_height="200dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="@mipmap/bg_mine_head">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/csl_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_16dp"
-                        app:layout_constraintBottom_toTopOf="@+id/csl_work"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:id="@+id/iv_head"
-                            android:layout_width="54dp"
-                            android:layout_height="54dp"
-                            android:layout_marginStart="@dimen/_12dp"
-                            android:src="@mipmap/default_head"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/csl_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_16dp"
+                            app:layout_constraintBottom_toTopOf="@+id/csl_work"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/tv_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10dp"
-                            android:includeFontPadding="false"
-                            android:textColor="?colorOnSurface"
-                            android:textSize="18dp"
-                            app:layout_constraintBottom_toTopOf="@+id/tv_desc"
-                            app:layout_constraintStart_toEndOf="@+id/iv_head"
-                            app:layout_constraintTop_toTopOf="@id/iv_head"
-                            app:layout_constraintVertical_chainStyle="packed"
-                            tools:text="未登录" />
+                            <ImageView
+                                android:id="@+id/iv_head"
+                                android:layout_width="54dp"
+                                android:layout_height="54dp"
+                                android:layout_marginStart="@dimen/_12dp"
+                                android:src="@mipmap/default_head"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/tv_desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:textColor="?colorOnSurface"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/tv_name"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_name"
-                            tools:text="登录后发现更多精彩" />
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10dp"
+                                android:includeFontPadding="false"
+                                android:textColor="?colorOnSurface"
+                                android:textSize="18dp"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_desc"
+                                app:layout_constraintStart_toEndOf="@+id/iv_head"
+                                app:layout_constraintTop_toTopOf="@id/iv_head"
+                                app:layout_constraintVertical_chainStyle="packed"
+                                tools:text="未登录" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            <TextView
+                                android:id="@+id/tv_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:textColor="?colorOnSurface"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tv_name"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                                tools:text="登录后发现更多精彩" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </FrameLayout>
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/csl_work"
@@ -207,6 +209,7 @@
                     android:paddingStart="@dimen/_12dp"
                     android:paddingEnd="@dimen/_0dp"
                     android:paddingBottom="@dimen/_12dp"
+                    android:paddingTop="@dimen/_12dp"
                     android:text="@string/answers"
                     android:textColor="?colorOnSurface"
                     android:textSize="@dimen/_16dp" />
@@ -218,6 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:background="@color/transparent"
+                app:contentInsetStart="@dimen/_0dp"
                 app:layout_collapseMode="pin" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

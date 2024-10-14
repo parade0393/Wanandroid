@@ -13,4 +13,5 @@
     <dimen name="_20dp">20dp</dimen>
     <dimen name="_30dp">30dp</dimen>
     <dimen name="_0dp">0dp</dimen>
+    <dimen name="action_bar_height">56dp</dimen>
 </resources>

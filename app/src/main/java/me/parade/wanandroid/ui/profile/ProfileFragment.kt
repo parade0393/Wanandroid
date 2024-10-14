@@ -1,13 +1,18 @@
 package me.parade.wanandroid.ui.profile
 
 import android.os.Bundle
+import android.view.ViewGroup
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
 import com.angcyo.dsladapter.DslItemDecoration
 import com.angcyo.dsladapter.data.Page
 import com.angcyo.dsladapter.data.loadDataEnd
 import me.parade.lib_base.base.BaseFragment
+import me.parade.lib_common.ext.actionBarHeight
 import me.parade.lib_common.ext.px
+import me.parade.lib_common.ext.statusBarHeight
 import me.parade.wanandroid.R
 import me.parade.wanandroid.databinding.FragmentProfileBinding
 import me.parade.wanandroid.ui.home.child.explore.DslHomeArticleItem
@@ -21,6 +26,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.toolbar.inflateMenu(R.menu.mine_toolbar_menu)
+
+        val statusBarHeight = requireActivity().statusBarHeight()
+        binding.toolbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin = statusBarHeight
+        }
+        binding.cslInfo.updatePadding(top = statusBarHeight+requireContext().actionBarHeight())
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
