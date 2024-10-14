@@ -4,8 +4,13 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Build
 import android.text.Html
+import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.URLSpan
 import android.webkit.MimeTypeMap
+import android.widget.TextView
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import java.security.MessageDigest
@@ -149,5 +154,32 @@ fun String.toDisplayHtml(@SuppressLint("InlinedApi") flags:Int = Html.FROM_HTML_
         @Suppress("DEPRECATION")
         Html.fromHtml(this)
     }
+}
+
+/**
+ * 识别字符串中的超链接并转换为URLSpan,供TextView使用
+ */
+fun String.autoLinkUrl(drawUnderLine:Boolean = false):SpannableString{
+    val pattern = Pattern.compile(urlRegexStr)
+    val spannedString = SpannableString(this)
+    val matcher = pattern.matcher(this)
+    while (matcher.find()) {
+        val start = matcher.start()
+        val end = matcher.end()
+        spannedString.setSpan(object :URLSpan(matcher.group()){
+            override fun updateDrawState(ds: TextPaint) {
+                ds.isUnderlineText = drawUnderLine
+            }
+        },start,end,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    }
+   return spannedString
+}
+
+/**
+ * 识别内容的超链接并添加点击行为
+ */
+fun TextView.autoLinkUrl(content:String,drawUnderLine:Boolean = false){
+    text = content.autoLinkUrl(drawUnderLine)
+    movementMethod = LinkMovementMethod.getInstance()
 }
 

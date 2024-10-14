@@ -1,7 +1,13 @@
 package me.parade.lib_common.ext
 
+import android.app.Activity
 import android.content.Context
+import android.graphics.Rect
 import android.location.LocationManager
+import android.os.Build
+import android.util.TypedValue
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 fun Context.checkGPSIsOpen():Boolean{
     val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -31,5 +37,44 @@ fun Context.isWeixinAvilible():Boolean{
  */
 fun Context.isAliPayInstalled():Boolean{
     return isInstallAvailable("com.eg.android.AlipayGphone")
+}
+
+fun Activity.statusBarHeight():Int{
+    var statusBarHeight:Int = 0
+    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+         statusBarHeight = window.decorView.rootWindowInsets?.getInsets(WindowInsetsCompat.Type.statusBars())?.top?:0
+    }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        statusBarHeight = ViewCompat.getRootWindowInsets(window.decorView)?.getInsets(WindowInsetsCompat.Type.statusBars())?.top?:0
+    }
+    if (statusBarHeight == 0){
+        val rectangle = Rect()
+       window.decorView.getWindowVisibleDisplayFrame(rectangle)
+        statusBarHeight = rectangle.top
+    }
+    if (statusBarHeight == 0){
+        try {
+            val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+            if (resourceId > 0) {
+                statusBarHeight = resources.getDimensionPixelSize(resourceId)
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+    }
+    if (statusBarHeight == 0){
+
+        // 如果还是获取不到，使用一个默认值
+        val density: Float = resources.displayMetrics.density
+        statusBarHeight = (24 * density + 0.5f).toInt()
+    }
+    return  statusBarHeight
+}
+
+fun Context.actionBarHeight():Int{
+    val tv = TypedValue()
+    if (theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+        return TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
+    }
+    return 56.px
 }
 
