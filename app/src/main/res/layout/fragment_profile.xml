@@ -34,7 +34,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contentScrim="?colorSurface"
+            app:titleEnabled="false"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
 
             <LinearLayout
                 android:id="@+id/ll_main"
@@ -215,6 +217,7 @@
                     android:textSize="@dimen/_16dp" />
 
             </LinearLayout>
+
             <!--                这里只能用-->
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -222,7 +225,23 @@
                 android:layout_height="?actionBarSize"
                 android:background="@color/transparent"
                 app:contentInsetStart="@dimen/_0dp"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin">
+
+                <TextView
+                    android:paddingStart="@dimen/_20dp"
+                    android:paddingEnd="@dimen/_0dp"
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_20dp"
+                    android:textColor="?colorOnSurface"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:visibility="gone"/>
+
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 

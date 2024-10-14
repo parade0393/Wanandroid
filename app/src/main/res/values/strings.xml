@@ -17,4 +17,5 @@
     <string name="mine_my_like">我喜欢的</string>
     <string name="settings">设置</string>
     <string name="answers">问答</string>
+    <string name="empty">\"\"</string>
 </resources>
