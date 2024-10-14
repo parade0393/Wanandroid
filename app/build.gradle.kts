@@ -75,6 +75,7 @@ dependencies {
     }
     implementation(libs.okhttp.client)
     implementation(libs.banner)
+    implementation(libs.androidx.activity)
 
 
 }

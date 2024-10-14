@@ -80,6 +80,18 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
                 fresh()
             }
         }
+
+        binding.toolbar.setOnMenuItemClickListener { item->
+            return@setOnMenuItemClickListener when (item.itemId) {
+                R.id.mine_toolbar_set -> {
+                    true
+                }
+
+                else -> {
+                    false
+                }
+            }
+         }
     }
 
     override fun lazyLoad(tag: String) {
@@ -109,5 +121,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
     private fun fresh(){
         viewModel.getArticleList(loadPage,perPageSize)
     }
+
 
 }
