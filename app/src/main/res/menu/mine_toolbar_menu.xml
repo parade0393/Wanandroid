@@ -4,5 +4,5 @@
 <item android:id="@+id/mine_toolbar_set"
     android:icon="@null"
     android:title="@string/settings"
-    app:showAsAction="ifRoom"/>
+    app:showAsAction="ifRoom" />
 </menu>

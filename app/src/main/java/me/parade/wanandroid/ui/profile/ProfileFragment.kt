@@ -1,8 +1,13 @@
 package me.parade.wanandroid.ui.profile
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +18,7 @@ import com.angcyo.dsladapter.data.loadDataEnd
 import me.parade.lib_base.base.BaseFragment
 import me.parade.lib_common.ext.actionBarHeight
 import me.parade.lib_common.ext.px
+import me.parade.lib_common.ext.pxF
 import me.parade.lib_common.ext.statusBarHeight
 import me.parade.lib_common.utils.CollapsingToolbarStateChangeListener
 import me.parade.wanandroid.R
@@ -28,6 +34,18 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.toolbar.inflateMenu(R.menu.mine_toolbar_menu)
+        val settingItem = binding.toolbar.menu.findItem(R.id.mine_toolbar_set)
+        (settingItem as? TextView)?.apply {
+            textSize = 27.toFloat().pxF
+        }?:run {
+            //这里是没有actionView
+            // 如果没有 actionView，可以使用 SpannableString 来设置样式
+            val title = settingItem.title.toString()
+            val spannableString = SpannableString(title)
+            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.md_theme_scrim)), 0, title.length, 0)
+            spannableString.setSpan(AbsoluteSizeSpan(17, true), 0, title.length, 0)
+            settingItem.title = spannableString
+        }
 
         //设置布局来适配沉浸式，使布局不被insets影响
         val statusBarHeight = requireActivity().statusBarHeight()
