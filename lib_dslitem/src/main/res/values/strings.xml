@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dslitem_icon">icon</string>
+    <string name="dslitem_click">click</string>
+    <string name="dslitem_new">new</string>
+</resources>

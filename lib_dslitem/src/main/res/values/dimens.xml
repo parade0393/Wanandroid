@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dslitem__12dp">12dp</dimen>
+    <dimen name="dslitem__20dp">20dp</dimen>
+    <dimen name="dslitem__16dp">16dp</dimen>
+</resources>
