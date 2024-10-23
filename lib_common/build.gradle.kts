@@ -45,5 +45,7 @@ dependencies {
     compileOnly(libs.androidx.swiperefresh)
     compileOnly(libs.androidx.coordinatorlayout)
     compileOnly(libs.google.material)
-    implementation(libs.androidx.constraintlayout)
+    compileOnly(libs.androidx.constraintlayout){
+        exclude(group = "androidx.appcompat", module = "appcompat")
+    }
 }

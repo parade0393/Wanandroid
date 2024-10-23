@@ -16,6 +16,7 @@ import java.lang.reflect.ParameterizedType
 /**
  * ViewModel创建，包括构造函数里有参数的情况
  * 有SavedStateHandle和Application的参数会自动传值，其他参数需要使用者通过重写Base类的provideParameter方法自行赋值，
+ * [viewModelClass]这种语法相当于get
  */
 object ViewModelCreateHelper {
     fun <VM : BaseViewModel> createViewModel(
@@ -109,10 +110,11 @@ object ViewModelCreateHelper {
                             }
                         }
                     }
+                    @Suppress("UNCHECKED_CAST")
                     return constructor.newInstance(*params.toTypedArray()) as VM
                 } catch (e: Exception) {
                     // 记录异常信息，但继续尝试下一个构造函数
-                    me.parade.lib_common.ext.loge(
+                    loge(
 
                         "Failed to create ViewModel with constructor: ${constructor.toGenericString()}",
                         "ViewModelCreateHelper"

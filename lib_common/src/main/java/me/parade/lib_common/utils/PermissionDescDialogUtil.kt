@@ -1,4 +1,4 @@
-package com.liangzheng.luoyang_zhihui_zhengxie
+package me.parade.lib_common.utils
 
 import android.app.Activity
 import android.graphics.Color

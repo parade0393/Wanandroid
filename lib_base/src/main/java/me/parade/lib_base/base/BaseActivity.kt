@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.viewbinding.ViewBinding
 import me.parade.lib_base.helper.ViewModelCreateHelper
 import me.parade.lib_common.ext.logw
@@ -20,7 +21,7 @@ abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity
         super.onCreate(savedInstanceState)
         binding = createBinding()
 
-        viewModel = ViewModelCreateHelper.createViewModel(viewModelStore,javaClass,defaultViewModelCreationExtras,::provideParameter)
+        viewModel = ViewModelCreateHelper.createViewModel(viewModelStore,javaClass,CreationExtras.Empty,::provideParameter)
         // 只有在使用 ViewBinding 时才需要调用 setContentView
         if(binding !is ViewDataBinding){
             setContentView(binding.root)
