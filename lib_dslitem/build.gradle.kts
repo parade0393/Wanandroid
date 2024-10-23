@@ -31,10 +31,16 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     implementation(libs.androidx.constraintlayout)
-
+    compileOnly(libs.angcyo.dsladapter)
+    compileOnly(libs.lifecycle.runtime)
+    compileOnly(libs.androidx.recyclerview)
 }
