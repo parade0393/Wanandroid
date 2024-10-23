@@ -65,6 +65,15 @@ abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity
      */
     abstract fun initView(savedInstanceState: Bundle?)
 
+    /**
+     * private fun provideParameter(paramName: String, paramType: Class<*>): Any? {
+     *         return when (paramName) {
+     *             "repository" -> MyRepository() // 提供 MyRepository 实例
+     *             "someParameter" -> "这是一个参数" // 提供自定义字符串参数
+     *             else -> null // 其他参数返回 null
+     *         }
+     *     }
+     */
     protected open fun provideParameter(paramName: String, paramType: Class<*>): Any? {
         // 默认实现返回 null，子类应该重写这个方法来提供自定义参数
         logw(
