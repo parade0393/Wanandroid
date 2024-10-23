@@ -21,7 +21,7 @@ abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity
         super.onCreate(savedInstanceState)
         binding = createBinding()
 
-        viewModel = ViewModelCreateHelper.createViewModel(viewModelStore,javaClass,CreationExtras.Empty,::provideParameter)
+        viewModel = ViewModelCreateHelper.createViewModel(viewModelStore,javaClass,defaultViewModelCreationExtras,::provideParameter)
         // 只有在使用 ViewBinding 时才需要调用 setContentView
         if(binding !is ViewDataBinding){
             setContentView(binding.root)
