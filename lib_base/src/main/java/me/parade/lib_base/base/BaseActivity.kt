@@ -39,6 +39,7 @@ abstract class BaseActivity<DB:ViewBinding,VM: BaseViewModel> :AppCompatActivity
 
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun createBinding(): DB {
         val bindingClass = (javaClass.genericSuperclass as ParameterizedType)
             .actualTypeArguments[0] as Class<DB>
