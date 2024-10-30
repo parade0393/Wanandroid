@@ -76,3 +76,21 @@ lifecycleScope.launch {
 12. 依赖声明
    * 避免使用 compileOnly 来处理 UI 相关的依赖，否则在xml里会报错，无法预览等其他问题
 13. ConstrainLayout的充分使用
+
+在 Android 中，@+id 和 @id 的区别是非常重要的：
+
+@+id/name：
+
+
+"+" 号表示定义一个新的资源 ID
+在 R.java 文件中创建一个新的整型常量
+通常在第一次声明某个 View 的 ID 时使用
+相当于是声明和使用的结合
+
+
+@id/name：
+
+
+表示引用一个已经存在的资源 ID
+必须确保这个 ID 已经在某处被定义过（使用 @+id 定义或在 ids.xml 中定义）
+相当于仅仅是使用已存在的 ID

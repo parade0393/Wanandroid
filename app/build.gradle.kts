@@ -47,8 +47,14 @@ android {
 dependencies {
 
     implementation(project(":lib_base"))
-    implementation(project(":lib_image"))
     implementation(project(":lib_common"))
+    implementation(project(":lib_image"))
+    implementation(project(":lib_dslitem")){
+        exclude(group="androidx.constraintlayout", module = "constraintlayout")
+        exclude(group = "com.github.angcyo", module = "DslAdapter")
+        exclude(group = "androidx.lifecycle", module = "lifecycle-runtime-ktx")
+        exclude(group = "androidx.recyclerview", module = "recyclerview")
+    }
 
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)

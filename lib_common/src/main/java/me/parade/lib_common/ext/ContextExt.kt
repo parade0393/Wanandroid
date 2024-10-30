@@ -39,6 +39,9 @@ fun Context.isAliPayInstalled():Boolean{
     return isInstallAvailable("com.eg.android.AlipayGphone")
 }
 
+/**
+ * 状态栏高度
+ */
 fun Activity.statusBarHeight():Int{
     var statusBarHeight:Int = 0
     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
@@ -70,6 +73,9 @@ fun Activity.statusBarHeight():Int{
     return  statusBarHeight
 }
 
+/**
+ * 标题栏高度
+ */
 fun Context.actionBarHeight():Int{
     val tv = TypedValue()
     if (theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {

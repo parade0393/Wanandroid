@@ -49,4 +49,4 @@ class DslSettingItem : DslAdapterItem() {
     }
 }
 
-data class SettingItem(val mainTitle: String?, val subTitle: String?,@DrawableRes val leftDrawable:Int?)
+data class SettingItem(val mainTitle: String? = null, val subTitle: String? = null,@DrawableRes val leftDrawable:Int?=null)

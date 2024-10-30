@@ -1,5 +1,6 @@
 package me.parade.wanandroid.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.AbsoluteSizeSpan
@@ -57,6 +58,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
         //跑马灯必须的
         binding.toolbarTitle.isSelected = true
 
+
         binding.appBar.addOnOffsetChangedListener(CollapsingToolbarStateChangeListener { state, _ ->
             when(state){
                 CollapsingToolbarStateChangeListener.ToolbarState.EXPANDED -> {
@@ -102,6 +104,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
         binding.toolbar.setOnMenuItemClickListener { item->
             return@setOnMenuItemClickListener when (item.itemId) {
                 R.id.mine_toolbar_set -> {
+                    startActivity(Intent(requireContext(),SettingActivity::class.java))
                     true
                 }
 

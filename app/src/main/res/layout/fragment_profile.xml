@@ -224,8 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 app:contentInsetStart="@dimen/_0dp"
-                app:layout_collapseMode="pin"
-                app:titleTextAppearance="@style/ToolbarMenuItemText">
+                app:layout_collapseMode="pin">
 
                 <TextView
                     android:paddingStart="@dimen/_20dp"

@@ -40,7 +40,7 @@ android {
 dependencies {
 
     implementation(libs.androidx.constraintlayout)
-    compileOnly(libs.angcyo.dsladapter)
-    compileOnly(libs.lifecycle.runtime)
-    compileOnly(libs.androidx.recyclerview)
+    implementation(libs.angcyo.dsladapter)
+    implementation(libs.lifecycle.runtime)
+    implementation(libs.androidx.recyclerview)
 }
