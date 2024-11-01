@@ -1,5 +1,6 @@
 package me.parade.lib_dslitem
 
+import android.opengl.Visibility
 import android.view.View
 import androidx.annotation.DrawableRes
 import com.angcyo.dsladapter.DslAdapterItem
@@ -27,26 +28,32 @@ class DslSettingItem : DslAdapterItem() {
 
         itemBinding?.apply {
             settingData?.let { item ->
-               mainTitle.apply {
-                   text = item.mainTitle
-                   visibility = if (item.mainTitle.isNullOrBlank()) View.GONE else View.VISIBLE
-               }
+                mainTitle.apply {
+                    text = item.mainTitle
+                    visibility = if (item.mainTitle.isNullOrBlank()) View.GONE else View.VISIBLE
+                }
                 subTitle.apply {
                     text = item.subTitle
                     visibility = if (item.subTitle.isNullOrBlank()) View.GONE else View.VISIBLE
                 }
                 ivIcon.run {
-                    visibility = if (item.leftDrawable != null){
+                    visibility = if (item.leftDrawable != null) {
                         setImageResource(item.leftDrawable)
                         View.VISIBLE
-                    }else{
+                    } else {
                         View.GONE
                     }
                 }
-
+                ivCircle.visibility = if (item.redDot) View.VISIBLE else View.GONE
             }
         }
     }
 }
 
-data class SettingItem(val mainTitle: String? = null, val subTitle: String? = null,@DrawableRes val leftDrawable:Int?=null)
+data class SettingItem(
+    val mainTitle: String? = null,
+    val subTitle: String? = null,
+    @DrawableRes val leftDrawable: Int? = null,
+    val redDot: Boolean = false,
+    val tag: String = ""
+)

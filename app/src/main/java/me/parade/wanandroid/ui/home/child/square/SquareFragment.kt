@@ -55,9 +55,12 @@ class SquareFragment : BaseFragment<FragmentSquareBinding,SquareVM>() {
                 requestPageIndex = loadPage
             },true){
                 articleInfo = it
-                itemBottomInsert = 10.px
+                itemTopInsert = 10.px
                 itemLeftInsert = 10.px
                 itemRightInsert = 10.px
+                itemClick = {
+
+                }
             }
         }
     }

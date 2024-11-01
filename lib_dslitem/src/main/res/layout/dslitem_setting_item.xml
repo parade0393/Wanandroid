@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="@dimen/dslitem__12dp"
+    android:layout_marginEnd="@dimen/dslitem__12dp"
     android:padding="@dimen/dslitem__12dp">
 
     <androidx.constraintlayout.widget.Barrier
