@@ -11,11 +11,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
 import com.angcyo.dsladapter.DslItemDecoration
 import com.angcyo.dsladapter.data.Page
 import com.angcyo.dsladapter.data.loadDataEnd
+import com.angcyo.dsladapter.dslItem
 import me.parade.lib_base.base.BaseFragment
 import me.parade.lib_common.ext.actionBarHeight
 import me.parade.lib_common.ext.px
@@ -55,9 +57,21 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
         }
         binding.cslInfo.updatePadding(top = statusBarHeight+requireContext().actionBarHeight())
 
+        //region toolBar
         //跑马灯必须的
         binding.toolbarTitle.isSelected = true
+        binding.toolbar.setOnMenuItemClickListener { item->
+            return@setOnMenuItemClickListener when (item.itemId) {
+                R.id.mine_toolbar_set -> {
+                    startActivity(Intent(requireContext(),SettingActivity::class.java))
+                    true
+                }
 
+                else -> {
+                    false
+                }
+            }
+        }
 
         binding.appBar.addOnOffsetChangedListener(CollapsingToolbarStateChangeListener { state, _ ->
             when(state){
@@ -81,7 +95,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
                 }
             }
         })
+        //endregion
 
+        //region recyclerView
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = dslAdapter
@@ -91,6 +107,23 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
             loadPage++
             viewModel.getArticleList(loadPage,perPageSize)
         }
+        //endregion
+
+        //grid
+        binding.rcyTool.apply {
+            layoutManager = GridLayoutManager(requireContext(),4)
+            adapter = DslAdapter().apply {
+                render {
+                    for (i in 0 until 8) {
+                        dslItem(GridSetItem()){
+                            itemIcon = R.drawable.source_notes_24px
+                            itemText = "测试"
+                        }
+                    }
+                }
+            }
+        }
+        //endregion
 
         binding.main.apply {
             autoRefresh()
@@ -101,18 +134,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
             }
         }
 
-        binding.toolbar.setOnMenuItemClickListener { item->
-            return@setOnMenuItemClickListener when (item.itemId) {
-                R.id.mine_toolbar_set -> {
-                    startActivity(Intent(requireContext(),SettingActivity::class.java))
-                    true
-                }
 
-                else -> {
-                    false
-                }
-            }
-         }
     }
 
     override fun lazyLoad(tag: String) {

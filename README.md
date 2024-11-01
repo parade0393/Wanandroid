@@ -94,3 +94,5 @@ lifecycleScope.launch {
 表示引用一个已经存在的资源 ID
 必须确保这个 ID 已经在某处被定义过（使用 @+id 定义或在 ids.xml 中定义）
 相当于仅仅是使用已存在的 ID
+14. ConstrainLayout不常用的一些功能
+   * GuildLine和Barrier，app:layout_constraintWidth_percent，layout_constraintDimensionRatio(要求是宽或高至少一个设为0dp)

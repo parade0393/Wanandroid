@@ -1,3 +1,5 @@
-1. 单一类型列表更新数据使用dslAdapter.loadDataEnd，alwaysLoadMore设置true，在数据量大于每页的请求量的时候才会加载更多，在initItem里可以设置所有关于item的配置，数据，分割线等
-2. 分割线：首先rv设置DslItemDecoration
+1. 单一类型列表更新数据使用dslAdapter.loadDataEnd，alwaysLoadMore设置true，在第一页数据量不够时会显示无更多数据，在initItem里可以设置所有关于item的配置，数据，分割线等
+2. 分割线：首先rv设置DslItemDecoration,然后可以设置item的itemTopInset,itemTopOffset,itemDecorationColor等属性
 3. 情感图设置-调用dslAdapter.render{setAdapterStatus(DslAdapterStatusItem.ADAPTER_STATUS_LOADING)}//设置加载中的状态
+4. 群组功能：设置每个item的itemGroups，一致的会是一组，当然如果数据是错乱的，需要把数据线整理(一组的放在一起)。然后通过重写itemBindOverride可以设置群组里不同item的背景
+5. 

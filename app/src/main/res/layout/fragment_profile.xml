@@ -205,6 +205,33 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_12dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/item_common_select_background">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的服务"
+                        android:padding="@dimen/_10dp"
+                        android:textColor="?colorOnSurface"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="?colorSurfaceVariant"
+                        android:layout_marginBottom="@dimen/_5dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcy_tool"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
