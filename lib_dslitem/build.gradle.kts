@@ -41,6 +41,6 @@ dependencies {
 
     implementation(libs.androidx.constraintlayout)
     implementation(libs.angcyo.dsladapter)
-    implementation(libs.lifecycle.runtime)
+    implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.recyclerview)
 }

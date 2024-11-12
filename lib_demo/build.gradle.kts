@@ -49,5 +49,5 @@ dependencies {
     implementation(libs.google.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity)
-    implementation(libs.lifecycle.runtime)
+    implementation(libs.androidx.lifecycle.runtime)
 }

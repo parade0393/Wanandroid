@@ -13,13 +13,12 @@ ktx = "1.13.1"
 androidxAppCompat = "1.7.0"
 googleMaterial = "1.12.0"
 androidxConstraintlayout = "2.1.4"
-androidxlifecycle = "2.8.3"
+androidxlifecycle = "2.8.5"
 androidxNavigation = "2.7.7"
 androidxActivityKtx = "1.9.1"
 androidxFragmentKtx = "1.8.2"
 databindingRuntime = "8.5.1"
 androidxSwiperefresh = "1.2.0-alpha01"
-lifecyle = "2.8.5"
 
 
 
@@ -48,6 +47,7 @@ google-material = { group = "com.google.android.material", name = "material", ve
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout"}
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidxlifecycle" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxlifecycle" }
+androidx-lifecycle-runtime = { group = "androidx.lifecycle" , name = "lifecycle-runtime-ktx", version.ref = "androidxlifecycle"}
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx",version.ref = "androidxNavigation" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx",version.ref = "androidxNavigation" }
 androidx-swiperefresh = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout",version.ref = "androidxSwiperefresh" }
@@ -77,7 +77,7 @@ angcyo-dslitem = { group = "com.github.angcyo", name = "DslItem", version.ref = 
 banner = { group = "io.github.youth5201314", name = "banner",version.ref = "banner" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
-lifecycle-runtime = { group = "androidx.lifecycle" , name = "lifecycle-runtime-ktx", version.ref = "lifecyle"}
+
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
 

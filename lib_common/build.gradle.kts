@@ -40,7 +40,7 @@ dependencies {
     compileOnly(libs.androidx.recyclerview)
     compileOnly(libs.androidx.viewpager2)
     compileOnly(libs.retrofit.gson)
-    compileOnly(libs.lifecycle.runtime)
+    compileOnly(libs.androidx.lifecycle.runtime)
     compileOnly(libs.androidx.appcompat)
     compileOnly(libs.androidx.swiperefresh)
     compileOnly(libs.androidx.coordinatorlayout)
