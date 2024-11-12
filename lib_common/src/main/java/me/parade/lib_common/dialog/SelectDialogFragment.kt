@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.parade.lib_common.R
 import me.parade.lib_common.recy.CustomItemDecoration
 
 /**
- * 选择性的dialog
+ * 选择性的dialog,底部弹出
  */
 class SelectDialogFragment : BaseDialogFragment() {
 
@@ -21,9 +20,7 @@ class SelectDialogFragment : BaseDialogFragment() {
 
     private var onItemClick: ((Int) -> Unit)? = null
 
-    init {
-        animStyle = DialogAnimation.BOTTOM
-    }
+    override var animStyle = DialogAnimation.BOTTOM
 
 
     override fun getDialogWidth() = WindowManager.LayoutParams.MATCH_PARENT
@@ -73,7 +70,6 @@ class SelectDialogFragment : BaseDialogFragment() {
             return SelectDialogFragment().apply {
                     items = this@Builder.items
                     onItemClick = this@Builder.onItemClick
-                    animStyle = this@Builder.animStyle
 
             }
         }

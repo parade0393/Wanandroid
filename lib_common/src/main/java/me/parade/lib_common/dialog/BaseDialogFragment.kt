@@ -37,8 +37,8 @@ import me.parade.lib_common.ext.px
  * 同时设置这些属性可以确保在所有情况下都能正确控制 Dialog 的取消行为
  */
 abstract class BaseDialogFragment:DialogFragment() {
-    protected var animStyle: DialogAnimation = DialogAnimation.CENTER
-    protected var canClickOutCancel: Boolean = true  // 添加 cancelable 属性
+    protected open var animStyle: DialogAnimation = DialogAnimation.CENTER
+    protected open var canClickOutCancel: Boolean = true  // 添加 cancelable 属性
 
     // 方案一：通过抽象方法让子类必须指定宽高
     protected abstract fun getDialogWidth(): Int
