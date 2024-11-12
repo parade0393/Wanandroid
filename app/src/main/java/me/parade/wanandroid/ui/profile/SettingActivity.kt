@@ -12,6 +12,8 @@ import com.angcyo.dsladapter.isFirstPosition
 import com.angcyo.dsladapter.isLastPosition
 import com.angcyo.dsladapter.isOnlyOne
 import me.parade.lib_base.base.BaseActivity
+import me.parade.lib_common.dialog.SelectDialogFragment
+import me.parade.lib_common.ext.logd
 import me.parade.lib_common.ext.px
 import me.parade.lib_dslitem.DslSettingItem
 import me.parade.lib_dslitem.SettingItem
@@ -73,6 +75,19 @@ class SettingActivity : BaseActivity<ActivitySettingBinding,SettingVm>() {
                                 itemRightOffset = 12.px
                                 itemDecorationColor = ContextCompat.getColor(this@SettingActivity,me.parade.lib_common.R.color.md_theme_outlineVariant)
                                 itemHolder.itemView.setBackgroundResource(R.color.item_group_item_select_background)
+                            }
+                        }
+                    }
+                    itemClick = {
+                        settingData?.mainTitle?.apply {
+                            when(this){
+                                "深色模式" -> {
+                                    SelectDialogFragment.Builder()
+                                        .setItems(mutableListOf("跟随系统","开启","关闭"))
+                                        .setOnItemClickListener {
+                                           logd(it)
+                                        }.build().show(supportFragmentManager,"select")
+                                }
                             }
                         }
                     }
