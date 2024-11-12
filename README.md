@@ -96,3 +96,42 @@ lifecycleScope.launch {
 相当于仅仅是使用已存在的 ID
 14. ConstrainLayout不常用的一些功能
    * GuildLine和Barrier，app:layout_constraintWidth_percent，layout_constraintDimensionRatio(要求是宽或高至少一个设为0dp)
+     
+res/anim/
+用于存放视图动画（View Animation）文件
+包括补间动画（Tween Animation）和帧动画（Frame Animation）
+只能处理四种简单属性：平移（translate）、缩放（scale）、旋转（rotate）、透明度（alpha）
+只改变视图的绘制效果，不会真正改变视图的属性
+性能较好，占用资源少
+使用 Animation 类
+XML 文件的根元素通常是 <set>, <alpha>, <scale>, <translate>, <rotate>
+
+
+res/animator/
+用于存放属性动画（Property Animation）文件
+可以处理任何对象的任何属性
+真实改变对象的属性值
+性能消耗相对较大，但功能更强大
+使用 Animator 类
+XML 文件的根元素通常是 <objectAnimator>, <valueAnimator>, <set>
+
+使用建议：
+
+使用 res/anim/ 的场景：
+简单的视图动画效果（平移、旋转、缩放、透明度）
+对性能要求较高的场景
+不需要改变视图实际属性的场景
+例如：对话框进入退出动画、列表项动画等
+
+
+使用 res/animator/ 的场景：
+
+
+需要动画改变视图实际属性的场景
+需要动画自定义属性的场景
+需要更复杂动画效果的场景
+例如：
+
+按钮点击反馈动画
+复杂的交互动画
+需要记住最终状态的动画

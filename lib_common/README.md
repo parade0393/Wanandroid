@@ -1,0 +1,1 @@
+##### 模块里的资源要通过public.xml里通过public标签暴漏出去，这样其他模块使用implementation依赖的就可以使用这些暴漏的资源了

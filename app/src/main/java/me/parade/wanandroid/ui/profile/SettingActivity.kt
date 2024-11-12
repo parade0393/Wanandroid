@@ -38,6 +38,8 @@ class SettingActivity : BaseActivity<ActivitySettingBinding,SettingVm>() {
         }
 
         val list = listOf(
+            SettingItem(mainTitle = "深色模式", tag = "UI"),
+            SettingItem(mainTitle = "字体大小", tag = "UI"),
             SettingItem(mainTitle = "个人信息", tag = "person"),
             SettingItem(mainTitle = "账户与安全", tag = "person"),
             SettingItem(mainTitle = "草稿箱", tag = "person"),
@@ -63,13 +65,13 @@ class SettingActivity : BaseActivity<ActivitySettingBinding,SettingVm>() {
                                 itemTopInsert = 1.px
                                 itemLeftOffset = 12.px
                                 itemRightOffset = 12.px
-                                itemDecorationColor = ContextCompat.getColor(this@SettingActivity,R.color.md_theme_outlineVariant)
+                                itemDecorationColor = ContextCompat.getColor(this@SettingActivity,me.parade.lib_common.R.color.md_theme_outlineVariant)
                                 itemHolder.itemView.setBackgroundResource(R.drawable.item_group_footer_select_background)
                             }else{
                                 itemTopInsert = 1.px
                                 itemLeftOffset = 12.px
                                 itemRightOffset = 12.px
-                                itemDecorationColor = ContextCompat.getColor(this@SettingActivity,R.color.md_theme_outlineVariant)
+                                itemDecorationColor = ContextCompat.getColor(this@SettingActivity,me.parade.lib_common.R.color.md_theme_outlineVariant)
                                 itemHolder.itemView.setBackgroundResource(R.color.item_group_item_select_background)
                             }
                         }

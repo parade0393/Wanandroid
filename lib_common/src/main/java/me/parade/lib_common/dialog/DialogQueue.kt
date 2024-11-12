@@ -6,6 +6,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import java.util.PriorityQueue
 
+/**
+ * 弹窗队列,避免同时弹出多个dialog
+ */
 class DialogQueue(private val lifecycleOwner: LifecycleOwner) {
 
     private var activeDialog: Dialog? = null

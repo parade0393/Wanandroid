@@ -19,6 +19,8 @@ import com.angcyo.dsladapter.data.Page
 import com.angcyo.dsladapter.data.loadDataEnd
 import com.angcyo.dsladapter.dslItem
 import me.parade.lib_base.base.BaseFragment
+import me.parade.lib_common.dialog.AlertDialogFragment
+import me.parade.lib_common.dialog.DialogAnimation
 import me.parade.lib_common.ext.actionBarHeight
 import me.parade.lib_common.ext.px
 import me.parade.lib_common.ext.pxF
@@ -45,7 +47,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
             // 如果没有 actionView，可以使用 SpannableString 来设置样式
             val title = settingItem.title.toString()
             val spannableString = SpannableString(title)
-            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.md_theme_scrim)), 0, title.length, 0)
+            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), me.parade.lib_common.R.color.md_theme_scrim)), 0, title.length, 0)
             spannableString.setSpan(AbsoluteSizeSpan(17, true), 0, title.length, 0)
             settingItem.title = spannableString
         }
@@ -118,6 +120,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
                         dslItem(GridSetItem()){
                             itemIcon = R.drawable.source_notes_24px
                             itemText = "测试"
+                            itemClick = {
+                                AlertDialogFragment.Builder().setContent("确定要删除吗?")
+                                    .setPositiveClick {dialog ->
+                                        dialog.dismiss()
+                                    }.build().show(childFragmentManager,"alert")
+                            }
                         }
                     }
                 }
