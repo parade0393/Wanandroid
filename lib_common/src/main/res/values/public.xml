@@ -161,6 +161,7 @@
     <public name="_49dp" type="dimen"/>
     <public name="_14dp" type="dimen"/>
     <public name="_5dp" type="dimen"/>
+    <public name="_26dp" type="dimen"/>
 
     <public name="public_10dp_white_bg" type="drawable"/>
 </resources>

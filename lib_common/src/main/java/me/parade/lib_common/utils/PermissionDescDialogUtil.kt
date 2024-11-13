@@ -67,7 +67,7 @@ class PermissionDescDialogUtil private constructor() : DefaultLifecycleObserver 
     }
 
     // 实现 DefaultLifecycleObserver 接口的方法
-    override fun onDestroy(owner: LifecycleOwner) {
+    override fun onStop(owner: LifecycleOwner) {
         dismissPopupWindow()
         permissionPopup = null
         instance = null

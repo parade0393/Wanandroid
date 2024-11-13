@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
@@ -27,6 +28,8 @@ import me.parade.lib_common.ext.actionBarHeight
 import me.parade.lib_common.ext.px
 import me.parade.lib_common.ext.pxF
 import me.parade.lib_common.ext.statusBarHeight
+import me.parade.lib_common.toast.ToastManager
+import me.parade.lib_common.toast.ToastType
 import me.parade.lib_common.utils.CollapsingToolbarStateChangeListener
 import me.parade.wanandroid.R
 import me.parade.wanandroid.databinding.FragmentProfileBinding
@@ -139,6 +142,19 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
                                                     Toast.LENGTH_SHORT
                                                 ).show()
                                             }.build().show(childFragmentManager,"input")
+                                    }else if (data.contains("2")){
+                                        ToastManager.show(childFragmentManager,ToastType.NORMAL,"当前很好")
+                                    }else if (data.contains("3")){
+                                        ToastManager.show(childFragmentManager,ToastType.SUCCESS,"提交成功")
+                                    }else if (data.contains("4")){
+                                        ToastManager.show(childFragmentManager,ToastType.WARNING,"请填写正式姓名")
+                                    }else if (data.contains("5")){
+                                        ToastManager.show(childFragmentManager,ToastType.ERROR,"提交失败")
+                                    }else if (data.contains("6")){
+                                        ToastManager.show(childFragmentManager,ToastType.LOADING,"加载中")
+                                        binding.main.postDelayed({
+                                            ToastManager.dismissLoading()
+                                        },2000L)
                                     }
                                 }
 

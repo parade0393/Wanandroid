@@ -43,7 +43,7 @@ dependencies {
     compileOnly(libs.androidx.viewpager2)
     compileOnly(libs.retrofit.gson)
     compileOnly(libs.androidx.lifecycle.runtime)
-    compileOnly(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat)
     compileOnly(libs.androidx.swiperefresh)
     compileOnly(libs.androidx.coordinatorlayout)
     compileOnly(libs.google.material)
