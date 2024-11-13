@@ -8,6 +8,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -21,6 +22,7 @@ import com.angcyo.dsladapter.dslItem
 import me.parade.lib_base.base.BaseFragment
 import me.parade.lib_common.dialog.AlertDialogFragment
 import me.parade.lib_common.dialog.DialogAnimation
+import me.parade.lib_common.dialog.InputDialogFragment
 import me.parade.lib_common.ext.actionBarHeight
 import me.parade.lib_common.ext.px
 import me.parade.lib_common.ext.pxF
@@ -119,12 +121,27 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
                     for (i in 0 until 8) {
                         dslItem(GridSetItem()){
                             itemIcon = R.drawable.source_notes_24px
-                            itemText = "测试"
+                            itemText = "测试$i"
                             itemClick = {
-                                AlertDialogFragment.Builder().setContent("确定要删除吗?")
-                                    .setPositiveClick {dialog ->
-                                        dialog.dismiss()
-                                    }.build().show(childFragmentManager,"alert")
+                                itemText?.let{data->
+                                    if (data.contains("0")){
+                                        AlertDialogFragment.Builder().setContent("确定要删除吗?")
+                                            .setPositiveClick {dialog ->
+                                                dialog.dismiss()
+                                            }.build().show(childFragmentManager,"alert")
+                                    }else if (data.contains("1")){
+                                        InputDialogFragment.Builder()
+                                            .setHintText("请输入您的姓名...")
+                                            .setPositiveClick {
+                                                Toast.makeText(
+                                                    requireContext(),
+                                                    it,
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }.build().show(childFragmentManager,"input")
+                                    }
+                                }
+
                             }
                         }
                     }
