@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":lib_base"))
     implementation(project(":lib_common"))
     implementation(project(":lib_image"))
+    implementation(project(":lib_demo"))
     implementation(project(":lib_dslitem")){
         exclude(group="androidx.constraintlayout", module = "constraintlayout")
         exclude(group = "com.github.angcyo", module = "DslAdapter")

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.indices
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
@@ -31,6 +32,8 @@ import me.parade.lib_common.ext.statusBarHeight
 import me.parade.lib_common.toast.ToastManager
 import me.parade.lib_common.toast.ToastType
 import me.parade.lib_common.utils.CollapsingToolbarStateChangeListener
+import me.parade.lib_demo.dialog.DialogDemoActivity
+import me.parade.lib_demo.toast.ToastDemoActivity
 import me.parade.wanandroid.R
 import me.parade.wanandroid.databinding.FragmentProfileBinding
 import me.parade.wanandroid.ui.home.child.explore.DslHomeArticleItem
@@ -115,46 +118,22 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
             viewModel.getArticleList(loadPage,perPageSize)
         }
         //endregion
-
+        val items = listOf("dialog","Toast","测试","测试","测试","测试","测试","测试")
         //grid
         binding.rcyTool.apply {
             layoutManager = GridLayoutManager(requireContext(),4)
             adapter = DslAdapter().apply {
                 render {
-                    for (i in 0 until 8) {
+                    for (i in items.indices) {
                         dslItem(GridSetItem()){
                             itemIcon = R.drawable.source_notes_24px
-                            itemText = "测试$i"
+                            itemText = items[i]
                             itemClick = {
                                 itemText?.let{data->
-                                    if (data.contains("0")){
-                                        AlertDialogFragment.Builder().setContent("确定要删除吗?")
-                                            .setPositiveClick {dialog ->
-                                                dialog.dismiss()
-                                            }.build().show(childFragmentManager,"alert")
-                                    }else if (data.contains("1")){
-                                        InputDialogFragment.Builder()
-                                            .setHintText("请输入您的姓名...")
-                                            .setPositiveClick {
-                                                Toast.makeText(
-                                                    requireContext(),
-                                                    it,
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
-                                            }.build().show(childFragmentManager,"input")
-                                    }else if (data.contains("2")){
-                                        ToastManager.show(childFragmentManager,ToastType.NORMAL,"当前很好")
-                                    }else if (data.contains("3")){
-                                        ToastManager.show(childFragmentManager,ToastType.SUCCESS,"提交成功")
-                                    }else if (data.contains("4")){
-                                        ToastManager.show(childFragmentManager,ToastType.WARNING,"请填写正式姓名")
-                                    }else if (data.contains("5")){
-                                        ToastManager.show(childFragmentManager,ToastType.ERROR,"提交失败")
-                                    }else if (data.contains("6")){
-                                        ToastManager.show(childFragmentManager,ToastType.LOADING,"加载中")
-                                        binding.main.postDelayed({
-                                            ToastManager.dismissLoading()
-                                        },2000L)
+                                    if (data.contains("dialog")){
+                                        startActivity(Intent(requireContext(),DialogDemoActivity::class.java))
+                                    }else if (data.contains("Toast")){
+                                        startActivity(Intent(requireContext(),ToastDemoActivity::class.java))
                                     }
                                 }
 
