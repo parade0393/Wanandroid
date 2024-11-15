@@ -8,12 +8,9 @@ import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.indices
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.angcyo.dsladapter.DslAdapter
@@ -22,21 +19,16 @@ import com.angcyo.dsladapter.data.Page
 import com.angcyo.dsladapter.data.loadDataEnd
 import com.angcyo.dsladapter.dslItem
 import me.parade.lib_base.base.BaseFragment
-import me.parade.lib_common.dialog.AlertDialogFragment
-import me.parade.lib_common.dialog.DialogAnimation
-import me.parade.lib_common.dialog.InputDialogFragment
 import me.parade.lib_common.ext.actionBarHeight
 import me.parade.lib_common.ext.px
 import me.parade.lib_common.ext.pxF
 import me.parade.lib_common.ext.statusBarHeight
-import me.parade.lib_common.toast.ToastManager
-import me.parade.lib_common.toast.ToastType
 import me.parade.lib_common.utils.CollapsingToolbarStateChangeListener
 import me.parade.lib_demo.dialog.DialogDemoActivity
 import me.parade.lib_demo.toast.ToastDemoActivity
 import me.parade.wanandroid.R
 import me.parade.wanandroid.databinding.FragmentProfileBinding
-import me.parade.wanandroid.ui.home.child.explore.DslHomeArticleItem
+import me.parade.wanandroid.dsl.DslHomeArticleItem
 
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {

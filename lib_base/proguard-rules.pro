@@ -19,3 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class me.parade.lib_base.base.**{*;}
+-keep class me.parade.lib_base.net.BaseResponse{*;}

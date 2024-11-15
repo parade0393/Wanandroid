@@ -11,7 +11,7 @@ import com.angcyo.dsladapter.data.loadDataEnd
 import me.parade.lib_base.base.BaseFragment
 import me.parade.lib_common.ext.px
 import me.parade.wanandroid.databinding.FragmentSquareBinding
-import me.parade.wanandroid.ui.home.child.explore.DslHomeArticleItem
+import me.parade.wanandroid.dsl.DslHomeArticleItem
 
 
 class SquareFragment : BaseFragment<FragmentSquareBinding,SquareVM>() {
