@@ -208,20 +208,6 @@
 
 #Banner
 -keep class com.youth.banner.** {*;}
--dontwarn com.youth.banner.*
--keep class * extends com.youth.banner.adapter.BannerAdapter { *; }
-# 如果使用了 BannerImageHolder
--keep class com.youth.banner.holder.BannerImageHolder { *; }
--dontwarn com.youth.banner.**
--keep class com.youth.banner.**{*;}
--dontwarn androidx.recyclerview.widget.RecyclerView$LayoutManager
--keep class androidx.recyclerview.widget.RecyclerView$LayoutManager{*;}
--dontwarn androidx.viewpager2.widget.ViewPager2
--keep class androidx.viewpager2.widget.ViewPager2{*;}
--dontwarn androidx.viewpager2.widget.PageTransformerAdapter
--keep class androidx.viewpager2.widget.PageTransformerAdapter{*;}
--dontwarn androidx.viewpager2.widget.ScrollEventAdapter
--keep class androidx.viewpager2.widget.ScrollEventAdapter{*;}
 
 # Retrofit + Gson
 -keepattributes Exceptions
