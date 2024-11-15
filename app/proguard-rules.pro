@@ -239,22 +239,15 @@
 #保证实体类不被混淆
 -keep class me.parade.wanandroid.dsl.**{*;}
 -keep class me.parade.wanandroid.net.model.**{*;}
--keep class me.parade.lib_base.net.BaseResponse{
-    *;
-    <init>();
-    <fields>;
-}
--keep class me.parade.lib_base.net.BaseResponse{*;}
--keep class * extends me.parade.lib_base.net.BaseResponse.**{*;}
--keep class me.parade.lib_base.net.BaseResponse$* { *; }
--keepclassmembers class * extends me.parade.lib_base.net.BaseResponse.**{*;}
 -keepclassmembers class me.parade.wanandroid.net.model.** { *; }
--keep class me.parade.wanandroid.net.service.**{*;}
--keep interface me.parade.wanandroid.net.service.**{*;}
--keepclassmembers class me.parade.wanandroid.net.model.PageResponse { *; }
--keepclassmembers class me.parade.lib_base.net.BaseResponse { *; }
+-keep class me.parade.lib_base.net.BaseResponse{*;}
 -keep class me.parade.lib_base.net.BaseResponse$* { *; }
+-keepclassmembers class me.parade.lib_base.net.BaseResponse { *; }
+#-keep class me.parade.wanandroid.net.service.**{*;}
+#keep interface me.parade.wanandroid.net.service.**{*;}
 -keep class me.parade.wanandroid.net.model.PageResponse$* { *; }
+-keepclassmembers class me.parade.wanandroid.net.model.PageResponse { *; }
+
 
 # 避免回调函数 onXXEvent 混淆
 -keepclassmembers class * {
