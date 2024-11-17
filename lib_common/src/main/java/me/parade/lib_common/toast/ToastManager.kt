@@ -26,4 +26,6 @@ object ToastManager {
         currentToast?.get()?.dismissAllowingStateLoss()
         currentToast?.clear()
     }
+
+    fun isShow() = currentToast?.get()?.dialog?.isShowing?:false
 }

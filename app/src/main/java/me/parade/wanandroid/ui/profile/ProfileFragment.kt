@@ -25,6 +25,7 @@ import me.parade.lib_common.ext.pxF
 import me.parade.lib_common.ext.statusBarHeight
 import me.parade.lib_common.utils.CollapsingToolbarStateChangeListener
 import me.parade.lib_demo.dialog.DialogDemoActivity
+import me.parade.lib_demo.download.DownloadDemoActivity
 import me.parade.lib_demo.toast.ToastDemoActivity
 import me.parade.wanandroid.R
 import me.parade.wanandroid.databinding.FragmentProfileBinding
@@ -110,7 +111,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
             viewModel.getArticleList(loadPage,perPageSize)
         }
         //endregion
-        val items = listOf("dialog","Toast","测试","测试","测试","测试","测试","测试")
+        val items = listOf("dialog","Toast","Download","测试","测试","测试","测试","测试")
         //grid
         binding.rcyTool.apply {
             layoutManager = GridLayoutManager(requireContext(),4)
@@ -126,6 +127,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileVm>() {
                                         startActivity(Intent(requireContext(),DialogDemoActivity::class.java))
                                     }else if (data.contains("Toast")){
                                         startActivity(Intent(requireContext(),ToastDemoActivity::class.java))
+                                    }else if (data.contains("Download")){
+                                        startActivity(Intent(requireContext(),DownloadDemoActivity::class.java))
                                     }
                                 }
 

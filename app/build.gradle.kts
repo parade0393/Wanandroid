@@ -21,8 +21,8 @@ android {
 
     buildTypes {
         debug {
-            isMinifyEnabled = true  //这个是用来开启删除无用代码，比如没有引用到的代码
-            isShrinkResources =  true //这个是用来开启删除无用资源，也就是没有被引用的文
+            isMinifyEnabled = false  //这个是用来开启删除无用代码，比如没有引用到的代码
+            isShrinkResources =  false //这个是用来开启删除无用资源，也就是没有被引用的文
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
