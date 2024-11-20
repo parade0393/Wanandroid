@@ -17,6 +17,7 @@ import me.parade.lib_base.net.RetrofitManager
 import me.parade.lib_base.net.service.Api
 import me.parade.lib_common.ext.getFileNameByUrl
 import me.parade.lib_common.ext.getMimeTypeFromFromUrl
+import me.parade.lib_common.ext.logd
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -64,7 +65,7 @@ object MediaDownloader {
                     )
                 }
             }
-
+            downloadInfo.mimeType.logd()
             val uniqueFileName = getUniqueFileName(context, fileUrl.getFileNameByUrl(), childFolder, downloadInfo)
             val (uri, outputStream) = createOutputFile(
                 context,

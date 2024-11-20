@@ -3,6 +3,7 @@ package me.parade.lib_base.net.interceptor
 import com.google.gson.Gson
 import me.parade.lib_base.net.BaseResponse
 import me.parade.lib_base.net.ErrorResponse
+import me.parade.lib_base.net.service.FileDownload
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
@@ -10,6 +11,7 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
 import retrofit2.HttpException
+import retrofit2.Invocation
 
 class ExceptionTransformInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -19,8 +21,13 @@ class ExceptionTransformInterceptor : Interceptor {
         return try {
             val response = chain.proceed(request)
 
+            // 检查是否有 @FileDownload 注解
+            val isDownloadRequest = request.tag(Invocation::class.java)
+                ?.method()
+                ?.annotations
+                ?.any { it is FileDownload } == true
             // 检查是否为文件下载请求,这里如果不判断，走下面把bodyStr再相应出去可能会破坏响应体结构，导致图片等无法显示
-            if (isFileDownloadRequest(response)) {
+            if (isDownloadRequest) {
                 // 对于文件下载，直接返回原始响应
                 return response
             }
@@ -93,6 +100,7 @@ class ExceptionTransformInterceptor : Interceptor {
             contentType?.startsWith("video/") == true -> true
             contentType?.startsWith("application/octet-stream") == true -> true
             contentType?.startsWith("application/pdf") == true -> true
+            contentType?.startsWith("application/") == true -> true
             // 检查Content-Disposition头，通常用于指示文件下载
             response.header("Content-Disposition")?.contains("attachment") == true -> true
             // 检查响应大小，如果超过某个阈值，可能是文件下载
