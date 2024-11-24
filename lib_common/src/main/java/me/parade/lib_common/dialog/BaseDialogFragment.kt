@@ -9,7 +9,6 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import me.parade.lib_common.R
-import me.parade.lib_common.ext.px
 
 /**
  * 基础DialogFragment
@@ -35,6 +34,9 @@ import me.parade.lib_common.ext.px
  * setCancelable()：这是 Dialog 的属性，控制是否可以通过返回键关闭对话框
  *
  * 同时设置这些属性可以确保在所有情况下都能正确控制 Dialog 的取消行为
+ *
+ * 基于此Base新建dialog实现类时的步骤，①重写两个抽象方法确定宽高①通过onCreateView确定布局
+ * ③通过Builder设置参数④在onViewCreated中根据参数更新布局
  */
 abstract class BaseDialogFragment:DialogFragment() {
     protected open var animStyle: DialogAnimation = DialogAnimation.CENTER

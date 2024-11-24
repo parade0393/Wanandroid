@@ -10,11 +10,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseActivity
-import me.parade.lib_base.download.DownloadResult
 import me.parade.lib_base.download.MediaDownloader
 import me.parade.lib_common.ext.getMimeTypeFromFromUrl
 import me.parade.lib_common.toast.ToastManager
 import me.parade.lib_common.toast.ToastType
+import me.parade.lib_common.utils.DownloadResult
 import me.parade.lib_demo.R
 import me.parade.lib_demo.databinding.ActivityDownloadDemoBinding
 
@@ -26,6 +26,9 @@ class DownloadDemoActivity : BaseActivity<ActivityDownloadDemoBinding,DownloadDe
 
     private val fileUrl2 = "http://www.rongchang.gov.cn/zwgk_264/zcwj/xzgfxwj/202411/W020241108519785656150.docx"
     private val fileUrl3 = "http://www.rongchang.gov.cn/zwgk_264/zcwj/xzgfxwj/202409/W020240925391671580459.pdf"
+
+    private val fileUrl4 =
+        "https://dldir1.qq.com/weixin/android/weixin8053android2740_0x28003533_arm64.apk"
 
 
     override fun getLayoutResId() = R.layout.activity_download_demo

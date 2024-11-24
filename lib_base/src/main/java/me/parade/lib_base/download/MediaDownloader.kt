@@ -18,6 +18,7 @@ import me.parade.lib_base.net.service.Api
 import me.parade.lib_common.ext.getFileNameByUrl
 import me.parade.lib_common.ext.getMimeTypeFromFromUrl
 import me.parade.lib_common.ext.logd
+import me.parade.lib_common.utils.DownloadResult
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException

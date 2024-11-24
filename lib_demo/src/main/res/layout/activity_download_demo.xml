@@ -36,6 +36,18 @@
             android:layout_height="wrap_content"
             android:text="保存网络文件"/>
 
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示下载进度"/>
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示下载进度,自动消失"/>
+
 
     </LinearLayout>
 

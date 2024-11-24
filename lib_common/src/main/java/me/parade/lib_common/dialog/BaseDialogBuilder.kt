@@ -5,7 +5,7 @@ import androidx.annotation.FloatRange
 abstract class BaseDialogBuilder<T:BaseDialogBuilder<T>> {
     protected var title: String? = "提示"
     protected var animStyle: DialogAnimation = DialogAnimation.CENTER
-    protected var cancelable: Boolean = true
+    protected open var cancelable: Boolean = true
     protected var dimAmount = 0.5f
 
     companion object{

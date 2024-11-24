@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseViewModel
 import me.parade.lib_base.download.DownloadHelper
 import me.parade.lib_base.download.DownloadHelper.saveToAlbum
-import me.parade.lib_base.download.DownloadResult
+import me.parade.lib_common.utils.DownloadResult
 import me.parade.lib_base.helper.requestFlowResponse
 import me.parade.lib_base.net.RetrofitManager
 import me.parade.wanandroid.net.model.TestBean

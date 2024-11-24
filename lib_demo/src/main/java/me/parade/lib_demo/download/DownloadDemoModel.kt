@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseViewModel
-import me.parade.lib_base.download.DownloadResult
 import me.parade.lib_base.download.MediaDownloader
+import me.parade.lib_common.utils.DownloadResult
 
 /**
  * @author : parade
