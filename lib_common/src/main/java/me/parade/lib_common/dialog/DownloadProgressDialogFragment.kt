@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -28,14 +29,13 @@ class DownloadProgressDialogFragment : BaseDialogFragment() {
     private var onNegativeClick: (() -> Unit)? = null
     override var canClickOutCancel: Boolean = false
 
-    private lateinit var button_group: Group
-    private lateinit var v_divider: View
     private lateinit var tvCancel: TextView
     private lateinit var tvConfirm: TextView
-    private lateinit var v_vertical_divider: View
     private lateinit var progressBar: ProgressBar
     private lateinit var tvSize: TextView
     private lateinit var tvPercent: TextView
+    private lateinit var llBtn:LinearLayout
+    private lateinit var vDivider:View
 
     override fun getDialogWidth() = WindowManager.LayoutParams.MATCH_PARENT
     override fun getDialogHeight() = WindowManager.LayoutParams.WRAP_CONTENT
@@ -54,21 +54,19 @@ class DownloadProgressDialogFragment : BaseDialogFragment() {
         view.apply {
             findViewById<TextView>(R.id.tvTitle).text = title
             findViewById<TextView>(R.id.tvContent).text = content
-            tvConfirm = findViewById<TextView>(R.id.tvConfirm)
-            tvCancel = findViewById<TextView>(R.id.tvCancel)
-            v_divider = findViewById(R.id.v_divider)
-            v_vertical_divider = findViewById(R.id.v_vertical_divider)
-            button_group = findViewById(R.id.button_group)
+            tvConfirm = findViewById(R.id.tvConfirm)
+            tvCancel = findViewById(R.id.tvCancel)
             progressBar = findViewById(R.id.pb_download)
             tvSize = findViewById(R.id.tvSize)
             tvPercent = findViewById(R.id.tvPercent)
+            llBtn = findViewById(R.id.llBtn)
+            vDivider = findViewById(R.id.v_divider)
             tvConfirm.apply {
                 text = positiveButton
                 setOnClickListener {
                     if (onPositiveClick != null) {
                         onPositiveClick?.invoke()
                     }
-                    dismissAllowingStateLoss()
                 }
             }
             tvCancel.apply {
@@ -130,25 +128,12 @@ class DownloadProgressDialogFragment : BaseDialogFragment() {
     fun isCanAutoDismiss():Boolean = !showCancel && !showConfirm
 
     private fun updateButtonVisibility(showCancel: Boolean, showConfirm: Boolean) {
-        // 显示按钮组
-        button_group.visibility = if (showCancel || showConfirm) View.VISIBLE else View.GONE
-
-        // 控制各个组件的显示
-        v_divider.visibility = if (showCancel || showConfirm) View.VISIBLE else View.GONE
         tvCancel.visibility = if (showCancel) View.VISIBLE else View.GONE
         tvConfirm.visibility = if (showConfirm) View.VISIBLE else View.GONE
-
-        // 只有当两个按钮都显示时才显示垂直分割线
-        v_vertical_divider.visibility = if (showCancel && showConfirm) View.VISIBLE else View.GONE
-
-        // 调整确认按钮的约束
-        val params = tvConfirm.layoutParams as ConstraintLayout.LayoutParams
-        if (showCancel) {
-            params.startToEnd = v_vertical_divider.id
-        } else {
-            params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+        if (!showCancel && !showConfirm){
+            llBtn.visibility = View.GONE
+            vDivider.visibility = View.GONE
         }
-        tvConfirm.layoutParams = params
     }
 
     class Builder : BaseDialogBuilder<Builder>() {
@@ -165,17 +150,11 @@ class DownloadProgressDialogFragment : BaseDialogFragment() {
         fun setContent(content: String) = apply { this.content = content }
         fun setPositiveButton(text: String, onClick: () -> Unit) = apply {
             this.positiveButton = text
-        }
-
-        fun setPositiveClick(onClick: () -> Unit) = apply {
             this.onPositiveClick = onClick
         }
 
         fun setNegativeButton(text: String, onClick: () -> Unit) = apply {
             this.negativeButton = text
-        }
-
-        fun setNegativeClick(onClick: () -> Unit) = apply {
             this.onNegativeClick = onClick
         }
 

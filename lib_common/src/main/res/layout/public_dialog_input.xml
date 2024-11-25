@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etContent"
         android:layout_marginTop="15dp"
-        android:background="#f4f4f4"/>
+        android:background="@color/md_theme_surface"/>
 
 
     <TextView
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvCancel"
         app:layout_constraintBottom_toBottomOf="@+id/tvCancel"
-        android:background="#f4f4f4"/>
+        android:background="@color/md_theme_surface"/>
 
 
     <TextView

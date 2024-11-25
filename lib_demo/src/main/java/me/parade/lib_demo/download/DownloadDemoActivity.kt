@@ -51,20 +51,23 @@ class DownloadDemoActivity : BaseActivity<ActivityDownloadDemoBinding,DownloadDe
 
         binding.btn4.setOnClickListener {
             currentDialog = DownloadProgressDialogFragment.Builder()
-                .setTitle("更新提示")
+                .setTitle("新版本更新提示")
+                .setPositiveButton("去更新"){
+                    viewModel.downLoadFile(this,fileUrl4)
+                }
                 .setContent("1.优化更新操作.\n2.提升响应速度.\n3.增加清除缓存")
                 .build().also { it.show(supportFragmentManager,"download_progress") }
-            viewModel.downLoadFile(this,fileUrl4)
         }
 
         binding.btn5.setOnClickListener {
             currentDialog = DownloadProgressDialogFragment.Builder()
                 .setTitle("更新提示")
                 .setContent("1.优化更新操作.\n2.提升响应速度.\n3.增加清除缓存")
+                .setPositiveButton("去更新"){
+                    viewModel.downLoadFile(this,fileUrl4)
+                }
                 .setShowCancel(false)
-                .setShowConfirm(false)
                 .build().also { it.show(supportFragmentManager,"download_progress") }
-            viewModel.downLoadFile(this,fileUrl4)
         }
 
         lifecycleScope.launch {

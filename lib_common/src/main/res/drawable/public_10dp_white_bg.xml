@@ -6,7 +6,7 @@
 
     <stroke
         android:width="1px"
-        android:color="#ECECEC" />
+        android:color="@color/md_theme_surface" />
 
     <corners android:radius="10dp" />
 
