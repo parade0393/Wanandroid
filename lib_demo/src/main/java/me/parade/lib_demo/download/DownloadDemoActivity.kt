@@ -8,9 +8,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseActivity
 import me.parade.lib_base.download.MediaDownloader
+import me.parade.lib_common.dialog.DownloadProgressDialogFragment
 import me.parade.lib_common.ext.getMimeTypeFromFromUrl
 import me.parade.lib_common.toast.ToastManager
 import me.parade.lib_common.toast.ToastType
@@ -19,6 +22,8 @@ import me.parade.lib_demo.R
 import me.parade.lib_demo.databinding.ActivityDownloadDemoBinding
 
 class DownloadDemoActivity : BaseActivity<ActivityDownloadDemoBinding,DownloadDemoModel>() {
+
+    private var currentDialog: DownloadProgressDialogFragment? = null
 
     private val imgNetUrl = "http://www.wuzhen.com.cn/uploads/summary/2018110109053169919.jpg"
     private val fileUrl =
@@ -33,6 +38,35 @@ class DownloadDemoActivity : BaseActivity<ActivityDownloadDemoBinding,DownloadDe
 
     override fun getLayoutResId() = R.layout.activity_download_demo
     override fun initView(savedInstanceState: Bundle?) {
+
+
+
+        binding.btn1.setOnClickListener {
+            viewModel.downLoadImage(this,imgNetUrl,MediaDownloader.FileType.IMAGE)
+        }
+
+        binding.btn3.setOnClickListener {
+            viewModel.downLoadImage(this,fileUrl2,MediaDownloader.FileType.GENERAL)
+        }
+
+        binding.btn4.setOnClickListener {
+            currentDialog = DownloadProgressDialogFragment.Builder()
+                .setTitle("更新提示")
+                .setContent("1.优化更新操作.\n2.提升响应速度.\n3.增加清除缓存")
+                .build().also { it.show(supportFragmentManager,"download_progress") }
+            viewModel.downLoadFile(this,fileUrl4)
+        }
+
+        binding.btn5.setOnClickListener {
+            currentDialog = DownloadProgressDialogFragment.Builder()
+                .setTitle("更新提示")
+                .setContent("1.优化更新操作.\n2.提升响应速度.\n3.增加清除缓存")
+                .setShowCancel(false)
+                .setShowConfirm(false)
+                .build().also { it.show(supportFragmentManager,"download_progress") }
+            viewModel.downLoadFile(this,fileUrl4)
+        }
+
         lifecycleScope.launch {
             launch {
                 viewModel.down.collect{ result->
@@ -54,15 +88,25 @@ class DownloadDemoActivity : BaseActivity<ActivityDownloadDemoBinding,DownloadDe
                     }
                 }
             }
-        }
 
-
-        binding.btn1.setOnClickListener {
-            viewModel.downLoadImage(this,imgNetUrl,MediaDownloader.FileType.IMAGE)
-        }
-
-        binding.btn3.setOnClickListener {
-            viewModel.downLoadImage(this,fileUrl2,MediaDownloader.FileType.GENERAL)
+            launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED){
+                    viewModel.downloadState.collect{result->
+                        when (result){
+                            is DownloadResult.Progress -> {
+                                currentDialog?.updateProgress(result)
+                            }
+                            is DownloadResult.Success -> {
+                                if (currentDialog?.dialog?.isShowing == true && currentDialog?.isCanAutoDismiss() == true){
+                                    currentDialog?.dismissAllowingStateLoss()
+                                }
+                            }
+                            is DownloadResult.Error -> {}
+                            DownloadResult.Idle -> {}
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -89,4 +133,6 @@ class DownloadDemoActivity : BaseActivity<ActivityDownloadDemoBinding,DownloadDe
             Toast.makeText(context, "打开文件失败: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 }

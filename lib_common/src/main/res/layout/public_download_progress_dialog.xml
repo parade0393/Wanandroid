@@ -63,9 +63,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSize"
+        app:layout_constraintBottom_toTopOf="@+id/v_divider"
         android:layout_marginTop="@dimen/_5dp"
-        android:progress="30"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+        app:layout_goneMarginBottom="@dimen/_16dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        />
 
     <View
         android:id="@+id/v_divider"
@@ -74,7 +76,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pb_download"
-        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvConfirm"
+        android:visibility="gone"
         android:background="#f4f4f4"/>
 
 
@@ -118,6 +121,7 @@
         android:id="@+id/button_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:constraint_referenced_ids="v_divider,tvCancel,v_vertical_divider,tvConfirm"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
