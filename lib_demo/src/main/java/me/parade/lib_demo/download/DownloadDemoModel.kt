@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import me.parade.lib_base.base.BaseViewModel
 import me.parade.lib_base.download.MediaDownloader
-import me.parade.lib_common.utils.DownloadResult
+import me.parade.lib_common.download.DownloadResult
 
 /**
  * @author : parade

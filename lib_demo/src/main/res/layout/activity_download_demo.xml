@@ -15,6 +15,7 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/ivCover"
             android:layout_width="@dimen/_200dp"
             android:layout_height="@dimen/_200dp"
             android:src="@drawable/demo"/>
@@ -29,7 +30,13 @@
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="保存view"/>
+            android:text="保存view到相册"/>
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="view转image"/>
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"

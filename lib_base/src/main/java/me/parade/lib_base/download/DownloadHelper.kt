@@ -21,7 +21,7 @@ import me.parade.lib_common.ext.getBitmapFormat
 import me.parade.lib_common.ext.getFileNameByUrl
 import me.parade.lib_common.ext.getMimeTypeFromFromUrl
 import me.parade.lib_common.ext.isImageFile
-import me.parade.lib_common.utils.DownloadResult
+import me.parade.lib_common.download.DownloadResult
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream

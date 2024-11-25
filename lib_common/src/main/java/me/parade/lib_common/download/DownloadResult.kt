@@ -1,4 +1,4 @@
-package me.parade.lib_common.utils
+package me.parade.lib_common.download
 
 import android.net.Uri
 

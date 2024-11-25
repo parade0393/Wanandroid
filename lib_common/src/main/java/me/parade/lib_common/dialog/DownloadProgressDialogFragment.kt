@@ -9,12 +9,10 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.Group
 import me.parade.lib_common.R
 import me.parade.lib_common.ext.logd
 import me.parade.lib_common.ext.px
-import me.parade.lib_common.utils.DownloadResult
+import me.parade.lib_common.download.DownloadResult
 import me.parade.lib_common.utils.FileSizeFormatter
 
 class DownloadProgressDialogFragment : BaseDialogFragment() {
