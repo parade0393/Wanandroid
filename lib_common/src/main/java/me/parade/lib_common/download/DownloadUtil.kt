@@ -2,12 +2,15 @@ package me.parade.lib_common.download
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -155,6 +158,7 @@ object DownloadUtil {
         downloadInfo: DownloadInfo
     ): Pair<Uri, OutputStream> {
         val baseDir = Environment.getExternalStoragePublicDirectory(downloadInfo.directory)
+
         val targetDir = if (childFolder.isNotEmpty()) {
             File(baseDir, childFolder).apply { mkdirs() }
         } else {
@@ -162,7 +166,12 @@ object DownloadUtil {
         }
 
         val file = File(targetDir, fileName)
-        return Pair(Uri.fromFile(file), FileOutputStream(file))
+        val uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            FileProvider.getUriForFile(context, "${context.packageName}.FileProvider", file)
+        } else {
+            Uri.fromFile(file)
+        }
+        return Pair(uri, FileOutputStream(file))
     }
 
     fun finishDownload(context: Context, uri: Uri, mimeType: String) {
@@ -173,12 +182,48 @@ object DownloadUtil {
             context.contentResolver.update(uri, values, null, null)
         } else {
             uri.path?.let { path ->
+                val file = File(path)
+                if (file.exists()) {
+                    when {
+                        mimeType.startsWith("image/") -> {
+                            insertImageToMediaStore(context, file, mimeType, uri)
+                            context.contentResolver.update(uri,ContentValues().apply {
+                                put(
+                                    MediaStore.Images.Media.SIZE,
+                                    file.length()
+                                )
+                            },null,null)
+                        }
+                    }
+                }
+
+
                 MediaScannerConnection.scanFile(
                     context,
                     arrayOf(path),
                     arrayOf(mimeType)
                 ) { _, _ -> }
+
+                context.sendBroadcast(
+                    Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file))
+                )
+
             }
+        }
+    }
+
+    private fun insertImageToMediaStore(context: Context, file: File, mimeType: String, uri: Uri) {
+        try {
+            // 对于图片，尝试直接插入MediaStore
+            context.contentResolver.insert(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                ContentValues().apply {
+                    put(MediaStore.Images.Media.MIME_TYPE, mimeType)
+                    put(MediaStore.Images.Media.DISPLAY_NAME, file.name)
+                    put(MediaStore.Images.Media.DATA, file.absolutePath)
+                })
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 }

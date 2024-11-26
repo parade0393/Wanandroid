@@ -290,7 +290,7 @@ object ViewToBitmapUtil {
             val fileName = "${timestamp}.png"
             val downloadInfo = DownloadInfo(
                 collection = MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                directory = Environment.DIRECTORY_PICTURES,
+                directory = Environment.DIRECTORY_DCIM,
                 mimeType = fileName.getMimeTypeFromFromUrl()
             )
             val (uri, outputStream) =

@@ -20,4 +20,15 @@
         <!--腾讯地图-->
         <package android:name="com.tencent.map"/>
     </queries>
+    <application>
+        <provider
+            android:authorities="${applicationId}.FileProvider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path"/>
+        </provider>
+    </application>
 </manifest>

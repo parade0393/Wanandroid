@@ -52,7 +52,7 @@ object MediaDownloader {
             val downloadInfo = when (fileType) {
                 FileType.IMAGE -> DownloadInfo(
                     collection = MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                    directory = Environment.DIRECTORY_PICTURES,
+                    directory = Environment.DIRECTORY_DCIM,
                     mimeType = fileUrl.getMimeTypeFromFromUrl()
                 )
                 FileType.GENERAL -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
