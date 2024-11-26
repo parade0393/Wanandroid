@@ -1,3 +1,4 @@
+import com.android.builder.model.SigningConfig
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -5,17 +6,12 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
-//    id("me.parade.dependency-exclude")
 }
 
-// Create a variable called keystorePropertiesFile, and initialize it to your
-// keystore.properties file, in the rootProject folder.
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 
-// Initialize a new Properties() object called keystoreProperties.
 val keystoreProperties = Properties()
 
-// Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 android {
@@ -56,6 +52,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs["release"]
         }
     }
     compileOptions {
