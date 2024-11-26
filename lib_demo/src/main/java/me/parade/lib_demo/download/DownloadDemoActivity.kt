@@ -67,7 +67,7 @@ class DownloadDemoActivity : BaseActivity<ActivityDownloadDemoBinding,DownloadDe
             currentDialog = DownloadProgressDialogFragment.Builder()
                 .setTitle("新版本更新提示")
                 .setPositiveButton("去更新"){
-                    viewModel.downLoadFile(this,fileUrl4)
+                    viewModel.downLoadFile(this,fileUrl3)
                 }
                 .setContent("1.优化更新操作.\n2.提升响应速度.\n3.增加清除缓存")
                 .build().also { it.show(supportFragmentManager,"download_progress") }

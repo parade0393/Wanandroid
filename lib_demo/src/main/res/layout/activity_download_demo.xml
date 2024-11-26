@@ -53,7 +53,7 @@
             android:id="@+id/btn5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="显示下载进度,自动消失"/>
+            android:text="显示下载进度,强制"/>
 
 
     </LinearLayout>

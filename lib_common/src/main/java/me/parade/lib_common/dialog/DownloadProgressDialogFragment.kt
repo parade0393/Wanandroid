@@ -147,11 +147,13 @@ class DownloadProgressDialogFragment : BaseDialogFragment() {
 
         fun setContent(content: String) = apply { this.content = content }
         fun setPositiveButton(text: String, onClick: () -> Unit) = apply {
+            this.showConfirm = true
             this.positiveButton = text
             this.onPositiveClick = onClick
         }
 
         fun setNegativeButton(text: String, onClick: () -> Unit) = apply {
+            this.showCancel = true
             this.negativeButton = text
             this.onNegativeClick = onClick
         }
