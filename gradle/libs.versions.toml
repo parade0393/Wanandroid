@@ -2,6 +2,7 @@
 compileSdk="34"
 
 coordinatorlayout="1.2.0"
+datastorePreferences="1.1.1"
 minSdk="21"
 refreshLayoutKernel="2.0.5"
 versionCode ="1"
@@ -41,6 +42,7 @@ viewpager2 = "1.1.0"
 
 [libraries]
 androidx-coordinatorlayout = { module = "androidx.coordinatorlayout:coordinatorlayout", version.ref = "coordinatorlayout" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat"}
 google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial"}

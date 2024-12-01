@@ -1,5 +1,3 @@
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -52,4 +50,5 @@ dependencies {
         exclude(group = "androidx.lifecycle")
         exclude(group = "androidx.core")
     }
+    compileOnly(libs.androidx.datastore.preferences)
 }

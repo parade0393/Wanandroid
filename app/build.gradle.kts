@@ -1,4 +1,4 @@
-import com.android.builder.model.SigningConfig
+
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -93,6 +93,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefresh)
+    implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.refresh.layout.kernel)
     implementation(libs.refresh.header.classics)
